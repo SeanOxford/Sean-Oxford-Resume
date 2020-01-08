@@ -6,31 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <com.example.myapplication.views.ResizeableAppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/Activity_AppBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Activity_AppBarLayout"
         android:theme="@style/AppTheme.AppBarOverlay"
         android:translationZ="1dp">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/Activity_toolbar"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/Activity_collapse_bar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </com.example.myapplication.views.ResizeableAppBarLayout>
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:title="fuck">
 
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/exp" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/Activity_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
+        android:id="@+id/MainActivity_Fragment_Container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/MainActivity_Fragment_Container"
         android:layout_below="@+id/Activity_AppBarLayout"
-        android:translationZ="5dp"
+        android:translationZ="5dp" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
+
 
 
 

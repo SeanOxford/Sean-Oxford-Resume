@@ -26,26 +26,15 @@ class MainActivity : BaseActivity() {
         val sfm = supportFragmentManager.beginTransaction()
         sfm.add(MainActivity_Fragment_Container.id, MenuFragment.create())
         sfm.commit()
-
-
     }
 
-
-    override fun onResume() {
-        super.onResume()
-
-        Activity_AppBarLayout.setExpanded(true)
-        Activity_AppBarLayout.expandToThird()
-
-
-    }
 
 
 
     @Subscribe
     public fun onButtonClickEvent(e: OttoBusClasses.ButtonEvent){
-        Log.d("nnn", String.format("RECIEVE"))
-
+        Log.d("nnn", String.format("got shit"))
+        Activity_AppBarLayout.setExpanded(false, true)
 
     }
 

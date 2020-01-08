@@ -8,18 +8,29 @@ import javax.inject.Inject
 
 abstract class BaseFragment : Fragment(){
 
-
-
-
-//    @Inject
-//    public lateinit var mBus: mBus
+    @Inject
+    protected lateinit var mBus: Bus
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        (context?.applicationContext as MyApp).myComponent.inject(this)
+        (activity?.application as MyApp).myComponent.inject(this)
     }
+
+
+    override fun onStart() {
+        super.onStart()
+        mBus.register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mBus.unregister(this)
+    }
+
+
+
+
 
 
 

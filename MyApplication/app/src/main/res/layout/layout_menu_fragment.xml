@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/LinearLayout_menu_Fragment">
+    android:id="@+id/RelativeLayout_menu_Fragment">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/circle_portrait_view_dimen"
+        android:layout_height="@dimen/circle_portrait_view_dimen"
+        android:id="@+id/CirclePortraitView_menu_fragment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        />
 
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:id="@+id/Button_menu_fragment_one"
-        android:text="Fragment 1"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
         />
 
 
 
 
 
-
-</LinearLayout>
+</RelativeLayout>

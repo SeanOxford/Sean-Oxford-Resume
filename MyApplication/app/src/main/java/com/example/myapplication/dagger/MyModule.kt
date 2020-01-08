@@ -15,14 +15,6 @@ class MyModule(private val app: Application) {
     @Singleton
     fun provideContext(): Context = app
 
-//    @Provides
-//    @Singleton
-//    fun provideOttoBus(): mBus {
-//        val bus = mBus()
-//        return bus
-//    }
-
-
     @Provides
     @Singleton
     fun provideBus(): Bus = Bus()

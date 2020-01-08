@@ -12,7 +12,7 @@ public abstract class BaseActivity : AppCompatActivity() {
 
 
     @Inject
-    public lateinit var mBus: Bus
+    protected lateinit var mBus: Bus
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
