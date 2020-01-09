@@ -1,16 +1,16 @@
 package com.example.myapplication.activities
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.fragments.MenuFragment
 import com.example.myapplication.util.OttoBusClasses
 import com.squareup.otto.Subscribe
 import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.material.appbar.AppBarLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+
+
 
 class MainActivity : BaseActivity() {
 
@@ -20,6 +20,17 @@ class MainActivity : BaseActivity() {
         setSupportActionBar(Activity_toolbar)
 
         initFragment()
+        Activity_toolbar.title = "dicks"
+        Activity_collapse_bar.title = " "
+
+
+        val params = Activity_AppBarLayout.layoutParams as CoordinatorLayout.LayoutParams
+        val behavior = params.behavior as AppBarLayout.Behavior?
+        behavior!!.setDragCallback(object : AppBarLayout.Behavior.DragCallback() {
+            override fun canDrag(appBarLayout: AppBarLayout): Boolean {
+                return false
+            }
+        })
     }
 
     private fun initFragment() {
@@ -32,8 +43,7 @@ class MainActivity : BaseActivity() {
 
 
     @Subscribe
-    public fun onButtonClickEvent(e: OttoBusClasses.ButtonEvent){
-        Log.d("nnn", String.format("got shit"))
+    public fun onMenuFragmentItemSelectedEvent(e: OttoBusClasses.MenuFragmentItemSelectedEvent){
         Activity_AppBarLayout.setExpanded(false, true)
 
     }

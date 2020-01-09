@@ -12,22 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior"
         android:translationZ="1dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/Activity_collapse_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:title="fuck">
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
 
             <com.example.myapplication.views.ScreenFractionImageView
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
                 android:src="@drawable/exp"
-                custom:screenFraction="10"/>
+                custom:screenFraction="3"/>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/Activity_toolbar"
@@ -48,7 +48,7 @@
         android:translationZ="5dp" />
 
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

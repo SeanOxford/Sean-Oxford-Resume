@@ -25,10 +25,17 @@ class ScreenFractionImageView @JvmOverloads constructor(
             )
             mScreenFraction = attributes
                 .getInteger(R.styleable.ScreenFractionImageViewAttrs_screenFraction, 1)
-
-            Log.d("nnn", String.format("screenFraction: %d", mScreenFraction))
         }
-
-
     }
+
+
+
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        layoutParams.height = resources.displayMetrics.heightPixels / mScreenFraction!!
+    }
+
+
+
 }

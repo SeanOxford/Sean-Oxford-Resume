@@ -7,5 +7,10 @@
     <dimen name="circle_portrait_view_padding">4dp</dimen>
 
 
+    <dimen name="menu_grid_view_image_dimen">48dp</dimen>
+
+
+
+
 
 </resources>
