@@ -9,7 +9,8 @@ import com.squareup.otto.Subscribe
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.android.material.appbar.AppBarLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-
+import com.example.myapplication.fragments.AboutMeFragment
+import com.example.myapplication.util.FragmentUtil
 
 
 class MainActivity : BaseActivity() {
@@ -31,6 +32,7 @@ class MainActivity : BaseActivity() {
                 return false
             }
         })
+
     }
 
     private fun initFragment() {
@@ -40,12 +42,24 @@ class MainActivity : BaseActivity() {
     }
 
 
-
+    @Subscribe
+    public fun onMenuFragmentItemSelectedEvent(e: OttoBusClasses.MenuFragmentItemSelectedEvent) {
+        Activity_AppBarLayout.setExpanded(false, true)
+    }
 
     @Subscribe
-    public fun onMenuFragmentItemSelectedEvent(e: OttoBusClasses.MenuFragmentItemSelectedEvent){
-        Activity_AppBarLayout.setExpanded(false, true)
-        Log.d("nnn", String.format("gotch %s", e.title))
+    public fun onMenuFragmentReturnToFragmentEvent(e: OttoBusClasses.MenuFragmentReturnToFragmentEvent) {
+        Activity_AppBarLayout.setExpanded(true, true)
+    }
+
+    @Subscribe
+    public fun onMenuFragmentExitAnimationFinishedEvent(e: OttoBusClasses.MenuFragmentExitAnimationFinishedEvent) {
+        FragmentUtil.changeFragment(supportFragmentManager, AboutMeFragment())
+    }
+
+    @Subscribe
+    public fun onReturnToMenuEvent(e: OttoBusClasses.ReturnToMenuEvent) {
+
     }
 
 

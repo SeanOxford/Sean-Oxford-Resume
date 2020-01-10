@@ -1,10 +1,8 @@
 package com.example.myapplication.fragments
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
@@ -14,12 +12,15 @@ import com.example.myapplication.views.MenuFragmentView
 class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks {
 
 
+
     val PERSONAL_INFO_STRING = "Personal Info"
     val EXPERIENCE_STRING = "Experience"
     val LINKEDIN_STRING = "LinkedIn"
     val SKILLS_STRING = "Skills"
     val SCHEDULE_INTERVIEW_STRING = "Schedule an Interview"
     val EXERCISES_STRING = "Exercises"
+
+    private var mView: MenuFragmentView? = null
 
     companion object {
         fun create(): MenuFragment = MenuFragment()
@@ -31,12 +32,20 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        if(mView == null){
+            mView = MenuFragmentView(context, createMenuInfo(), this)
+        } else {
+            mView?.animateIn()
+        }
 
-        val view = MenuFragmentView(context, createMenuInfo(), this)
-
-        return view
-
+        return  mView
     }
+
+    override fun onStart() {
+        super.onStart()
+        mBus.post(OttoBusClasses.MenuFragmentReturnToFragmentEvent())
+    }
+
 
 
     private fun createMenuInfo() :  ArrayList<MenuFragmentView.MenuItem>{
@@ -55,9 +64,14 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
 
 
     override fun onMenuItemSelected(title: String) {
-        Log.d("nnn", String.format("posting"))
         mBus.post(OttoBusClasses.MenuFragmentItemSelectedEvent(title))
     }
+
+    override fun onLeaveAnimFinished() {
+        mBus.post(OttoBusClasses.MenuFragmentExitAnimationFinishedEvent())
+    }
+
+
 
 
 }

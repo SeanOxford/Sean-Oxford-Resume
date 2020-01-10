@@ -1,11 +1,14 @@
 package com.example.myapplication.views
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Color
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.RelativeLayout
+import androidx.core.animation.addListener
 import com.example.myapplication.R
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.layout_menu_fragment.view.*
@@ -15,49 +18,93 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
 
     interface MenuFragmentViewCallbacks {
         fun onMenuItemSelected(title: String)
+        fun onLeaveAnimFinished()
     }
 
 
     val mMenuItemList = menuItemList
     val mCallback = callback
+    lateinit var mRecyclerView: MenuFragmentGridRecyclerView
 
 
     init {
-        layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
         View.inflate(context, R.layout.layout_menu_fragment, this)
-
-//        initCircleImage()
-
         initGridView()
     }
 
 
-    private fun initCircleImage() {
-        val circleImageView = CircleImageView(context)
-        val circleImageViewDimen = resources.getDimension(R.dimen.circle_portrait_view_dimen).toInt()
-        circleImageView.layoutParams = LayoutParams(circleImageViewDimen, circleImageViewDimen)
-        (circleImageView.layoutParams as LayoutParams).addRule(CENTER_HORIZONTAL, TRUE)
-        circleImageView.y = resources.displayMetrics.heightPixels / 10f
-        circleImageView.setImageResource(R.drawable.me)
-        circleImageView.borderColor = Color.parseColor("#72A2EF")
-        circleImageView.borderWidth =
-            resources.getDimension(R.dimen.circle_portrait_border_width).toInt()
+    private fun initGridView() {
+        mRecyclerView = MenuFragmentGridRecyclerView(
+            context,
+            mMenuItemList,
+            this
+        )
 
-        addView(circleImageView)
+        FrameLayout_menu_fragment_grid_container.addView(mRecyclerView)
     }
 
-    private fun initGridView() {
-        FrameLayout_menu_fragment_grid_container.addView(
-            MenuFragmentGridRecyclerView(
-                context,
-                mMenuItemList,
-                this
-            )
+
+    private fun animateOut() {
+        val menuDropAnim = ObjectAnimator.ofFloat(mRecyclerView, "translationY", mRecyclerView.height.toFloat())
+        menuDropAnim.duration = 400
+        menuDropAnim.addListener({ mCallback.onLeaveAnimFinished() })
+        menuDropAnim.start()
+
+        val portraitRaiseAnim = ObjectAnimator.ofFloat(CirclePortraitView_menu_fragment, "translationY", -200f)
+        val portraitFadeAnim = ObjectAnimator.ofFloat(CirclePortraitView_menu_fragment, "alpha", 0f)
+
+        val titleRaiseAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_title, "translationY", -200f)
+        val titleFadeAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_title, "alpha", 0f)
+
+        val subtitleRaiseAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_subtitle, "translationY", -200f)
+        val subtitleFadeAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_subtitle, "alpha", 0f)
+
+        val animatorSet = AnimatorSet()
+        animatorSet.playTogether(
+            portraitRaiseAnim,
+            portraitFadeAnim,
+            titleRaiseAnim,
+            titleFadeAnim,
+            subtitleRaiseAnim,
+            subtitleFadeAnim
         )
+
+        animatorSet.duration = 200
+
+
+        animatorSet.start()
+    }
+
+    public fun animateIn() {
+        val menuDropAnim = ObjectAnimator.ofFloat(mRecyclerView, "translationY", 0f)
+        menuDropAnim.duration = 400
+
+        val portraitRaiseAnim = ObjectAnimator.ofFloat(CirclePortraitView_menu_fragment, "translationY", 0f)
+        val portraitFadeAnim = ObjectAnimator.ofFloat(CirclePortraitView_menu_fragment, "alpha", 1f)
+
+        val titleRaiseAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_title, "translationY", 0f)
+        val titleFadeAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_title, "alpha", 1f)
+
+        val subtitleRaiseAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_subtitle, "translationY", 0f)
+        val subtitleFadeAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_subtitle, "alpha", 1f)
+
+        val animatorSet = AnimatorSet()
+        animatorSet.playTogether(
+            portraitRaiseAnim,
+            portraitFadeAnim,
+            titleRaiseAnim,
+            titleFadeAnim,
+            subtitleRaiseAnim,
+            subtitleFadeAnim, menuDropAnim
+        )
+
+        animatorSet.duration = 200
+        animatorSet.start()
     }
 
 
     override fun onMenuItemSelected(title: String) {
+        animateOut()
         mCallback.onMenuItemSelected(title)
     }
 

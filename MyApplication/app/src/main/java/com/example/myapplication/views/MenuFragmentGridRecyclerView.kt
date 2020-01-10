@@ -52,10 +52,8 @@ class MenuFragmentGridRecyclerView(
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
             val inflatedView = inflate(context, R.layout.menu_grid_view, null)
             inflatedView.layoutParams = LayoutParams(0, 0)
-
             inflatedView.layoutParams.width = resources.displayMetrics.widthPixels / 2
             inflatedView.layoutParams.height = height / 3
-
 
             return MenuViewHolder(inflatedView)
 
@@ -74,10 +72,7 @@ class MenuFragmentGridRecyclerView(
             holder.itemView.setOnClickListener {
                 mCallBack.onMenuItemSelected(menuItem.title)
             }
-
         }
-
-
     }
 
 

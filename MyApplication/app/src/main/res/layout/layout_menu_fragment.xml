@@ -7,13 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<!--    <androidx.constraintlayout.widget.Guideline-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/Guideline_menu_fragment_top"-->
-<!--        app:layout_constraintGuide_percent=".5"-->
-<!--        android:orientation="horizontal"-->
-<!--        />-->
 
 
     <TextView

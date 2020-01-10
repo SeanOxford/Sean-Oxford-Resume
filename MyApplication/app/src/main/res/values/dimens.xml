@@ -7,6 +7,11 @@
     <dimen name="circle_portrait_view_padding">4dp</dimen>
     <dimen name="menu_fragment_title_text_size">20dp</dimen>
     <dimen name="menu_fragment_subtitle_text_size">16dp</dimen>
+    <dimen name="about_me_fragment_title_text_size">50dp</dimen>
+    <dimen name="about_me_fragment_subtitle_text_size">30dp</dimen>
+    <dimen name="about_me_fragment_text_size">20dp</dimen>
+    <dimen name="about_me_fragment_item_space">2dp</dimen>
+
 
 
     <dimen name="menu_grid_view_image_dimen">48dp</dimen>
