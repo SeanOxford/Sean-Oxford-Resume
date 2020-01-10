@@ -2,12 +2,19 @@
     <dimen name="base_margin">16dp</dimen>
     <dimen name="half_margin">8dp</dimen>
 
-    <dimen name="circle_portrait_view_dimen">80dp</dimen>
+    <dimen name="circle_portrait_view_dimen">70dp</dimen>
     <dimen name="circle_portrait_border_width">6dp</dimen>
     <dimen name="circle_portrait_view_padding">4dp</dimen>
+    <dimen name="menu_fragment_title_text_size">20dp</dimen>
+    <dimen name="menu_fragment_subtitle_text_size">16dp</dimen>
 
 
     <dimen name="menu_grid_view_image_dimen">48dp</dimen>
+
+
+
+
+
 
 
 

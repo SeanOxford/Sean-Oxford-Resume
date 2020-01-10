@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import com.example.myapplication.R
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.layout_menu_fragment.view.*
 
 class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, callback: MenuFragmentViewCallbacks) :
     RelativeLayout(context), MenuFragmentGridRecyclerView.GridViewCallback {
@@ -23,14 +24,12 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
 
     init {
         layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-        initCircleImage()
+        View.inflate(context, R.layout.layout_menu_fragment, this)
+
+//        initCircleImage()
+
         initGridView()
-
-
-
-
     }
-
 
 
     private fun initCircleImage() {
@@ -38,8 +37,8 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
         val circleImageViewDimen = resources.getDimension(R.dimen.circle_portrait_view_dimen).toInt()
         circleImageView.layoutParams = LayoutParams(circleImageViewDimen, circleImageViewDimen)
         (circleImageView.layoutParams as LayoutParams).addRule(CENTER_HORIZONTAL, TRUE)
-        circleImageView.y = resources.displayMetrics.heightPixels / 8f
-        circleImageView.setImageResource(R.drawable.me2)
+        circleImageView.y = resources.displayMetrics.heightPixels / 10f
+        circleImageView.setImageResource(R.drawable.me)
         circleImageView.borderColor = Color.parseColor("#72A2EF")
         circleImageView.borderWidth =
             resources.getDimension(R.dimen.circle_portrait_border_width).toInt()
@@ -48,8 +47,13 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
     }
 
     private fun initGridView() {
-        val menuFragmentGridView = MenuFragmentGridRecyclerView(context, mMenuItemList, this)
-        addView(menuFragmentGridView)
+        FrameLayout_menu_fragment_grid_container.addView(
+            MenuFragmentGridRecyclerView(
+                context,
+                mMenuItemList,
+                this
+            )
+        )
     }
 
 

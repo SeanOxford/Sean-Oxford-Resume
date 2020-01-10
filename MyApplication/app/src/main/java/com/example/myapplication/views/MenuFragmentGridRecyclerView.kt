@@ -3,7 +3,7 @@ package com.example.myapplication.views
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
+import android.widget.FrameLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
@@ -19,23 +19,22 @@ class MenuFragmentGridRecyclerView(
         fun onMenuItemSelected(title: String)
     }
 
-    val mParamHeight = (resources.displayMetrics.heightPixels * 0.7f).toInt()
     val mCallBack = callback
     val mDataList = dataList
+    var mAdapter: MenuFragmentGridAdapter? = null
 
     init {
 
-        val relativelayoutParams = RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, mParamHeight)
-        relativelayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
-        layoutParams = relativelayoutParams
+        layoutParams = FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+        layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
 
 
-        val gridLayoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
-        layoutManager = gridLayoutManager
-
-        val adapter = MenuFragmentGridAdapter()
-
-        setAdapter(adapter)
+        viewTreeObserver.addOnGlobalLayoutListener {
+            if (mAdapter == null) {
+                mAdapter = MenuFragmentGridAdapter()
+                adapter = mAdapter
+            }
+        }
 
         initClickEating()
     }
@@ -47,17 +46,15 @@ class MenuFragmentGridRecyclerView(
         })
     }
 
-    private fun initData() {
-    }
-
 
     inner class MenuFragmentGridAdapter : RecyclerView.Adapter<MenuViewHolder>() {
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
             val inflatedView = inflate(context, R.layout.menu_grid_view, null)
             inflatedView.layoutParams = LayoutParams(0, 0)
 
             inflatedView.layoutParams.width = resources.displayMetrics.widthPixels / 2
-            inflatedView.layoutParams.height = mParamHeight / 3
+            inflatedView.layoutParams.height = height / 3
 
 
             return MenuViewHolder(inflatedView)

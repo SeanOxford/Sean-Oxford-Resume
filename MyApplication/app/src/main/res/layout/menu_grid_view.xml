@@ -12,6 +12,7 @@
         android:layout_above="@id/View_menu_grid_view_midpoint"
         android:layout_centerHorizontal="true"
         android:src="@drawable/me"
+        android:tint="#125A91"
         />
     <View
         android:layout_width="0px"

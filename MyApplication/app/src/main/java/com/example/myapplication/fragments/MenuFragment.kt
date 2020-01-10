@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import com.example.myapplication.R
 import com.example.myapplication.util.OttoBusClasses
 import com.example.myapplication.views.MenuFragmentView
-import kotlinx.android.synthetic.main.layout_menu_fragment.view.*
 
 class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks {
 
@@ -56,6 +55,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
 
 
     override fun onMenuItemSelected(title: String) {
+        Log.d("nnn", String.format("posting"))
         mBus.post(OttoBusClasses.MenuFragmentItemSelectedEvent(title))
     }
 

@@ -45,7 +45,7 @@ class MainActivity : BaseActivity() {
     @Subscribe
     public fun onMenuFragmentItemSelectedEvent(e: OttoBusClasses.MenuFragmentItemSelectedEvent){
         Activity_AppBarLayout.setExpanded(false, true)
-
+        Log.d("nnn", String.format("gotch %s", e.title))
     }
 
 

@@ -1,19 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout_menu_Fragment"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/RelativeLayout_menu_Fragment">
+    android:orientation="vertical">
 
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/Guideline_menu_fragment_top"-->
+<!--        app:layout_constraintGuide_percent=".5"-->
+<!--        android:orientation="horizontal"-->
+<!--        />-->
+
+
+    <TextView
+        android:id="@+id/TextView_menu_fragment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sean Oxford"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/menu_fragment_title_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.185" />
+
+    <TextView
+        android:id="@+id/TextView_menu_fragment_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Android Developer"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/menu_fragment_subtitle_text_size"
+        android:fontFamily="sans-serif-light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/CirclePortraitView_menu_fragment"
         android:layout_width="@dimen/circle_portrait_view_dimen"
         android:layout_height="@dimen/circle_portrait_view_dimen"
-        android:id="@+id/CirclePortraitView_menu_fragment"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        />
+        android:src="@drawable/me"
+        app:civ_border_width="3dp"
+        app:civ_border_color="#1369B0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.066" />
+
+    <FrameLayout
+        android:id="@+id/FrameLayout_menu_fragment_grid_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
