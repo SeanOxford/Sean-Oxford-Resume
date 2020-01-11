@@ -1,7 +1,6 @@
 package com.example.myapplication.activities
 
 import android.os.Bundle
-import android.util.Log
 import com.example.myapplication.R
 import com.example.myapplication.fragments.MenuFragment
 import com.example.myapplication.util.OttoBusClasses
@@ -9,19 +8,31 @@ import com.squareup.otto.Subscribe
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.android.material.appbar.AppBarLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import com.example.myapplication.fragments.AboutMeFragment
+import com.example.myapplication.fragments.InfoFragmentFragment
 import com.example.myapplication.util.FragmentUtil
+import com.example.myapplication.views.ToolBarCustomView
 
 
 class MainActivity : BaseActivity() {
+
+
+    private var mToolbar: ToolBarCustomView? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(Activity_toolbar)
+        mToolbar = ToolBarCustomView(this)
+
+        supportActionBar?.customView = mToolbar
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+
+
+
 
         initFragment()
-        Activity_toolbar.title = "dicks"
         Activity_collapse_bar.title = " "
 
 
@@ -41,20 +52,35 @@ class MainActivity : BaseActivity() {
         sfm.commit()
     }
 
+    private fun showToolbar(show: Boolean){
+        supportActionBar?.setHomeButtonEnabled(show)
+        supportActionBar?.setDisplayHomeAsUpEnabled(show)
+    }
+
+
+    @Subscribe
+    public fun onInfoFragmentGoBackEvent(e: OttoBusClasses.InfoFragmentGoBackEvent) {
+        mToolbar?.fadeOutTitle()
+    }
 
     @Subscribe
     public fun onMenuFragmentItemSelectedEvent(e: OttoBusClasses.MenuFragmentItemSelectedEvent) {
         Activity_AppBarLayout.setExpanded(false, true)
+        mToolbar?.setTitle(e.title)
     }
 
     @Subscribe
-    public fun onMenuFragmentReturnToFragmentEvent(e: OttoBusClasses.MenuFragmentReturnToFragmentEvent) {
+    public fun onMenuFragmentReturnToMenuEvent(e: OttoBusClasses.MenuFragmentReturnToMenuEvent) {
+        showToolbar(false)
         Activity_AppBarLayout.setExpanded(true, true)
+        mToolbar?.fadeOutTitle()
     }
 
     @Subscribe
     public fun onMenuFragmentExitAnimationFinishedEvent(e: OttoBusClasses.MenuFragmentExitAnimationFinishedEvent) {
-        FragmentUtil.changeFragment(supportFragmentManager, AboutMeFragment())
+        showToolbar(true)
+        FragmentUtil.changeFragment(supportFragmentManager, InfoFragmentFragment())
+        mToolbar?.fadeInTitle()
     }
 
     @Subscribe

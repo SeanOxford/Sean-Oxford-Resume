@@ -5,11 +5,11 @@ public class OttoBusClasses {
 
     public class MenuFragmentItemSelectedEvent(val title: String)
     public class MenuFragmentExitAnimationFinishedEvent
-    public class MenuFragmentReturnToFragmentEvent
+    public class MenuFragmentReturnToMenuEvent
 
     public class SetBackPressBehaviorEvent(val behavior: Int)
 
-    public class AboutMeFragmentGoBackEvent
+    public class InfoFragmentGoBackEvent
 
     public class ReturnToMenuEvent
 

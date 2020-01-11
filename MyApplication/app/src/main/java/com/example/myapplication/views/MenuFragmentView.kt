@@ -50,26 +50,20 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
         menuDropAnim.addListener({ mCallback.onLeaveAnimFinished() })
         menuDropAnim.start()
 
-        val portraitRaiseAnim = ObjectAnimator.ofFloat(CirclePortraitView_menu_fragment, "translationY", -200f)
         val portraitFadeAnim = ObjectAnimator.ofFloat(CirclePortraitView_menu_fragment, "alpha", 0f)
 
-        val titleRaiseAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_title, "translationY", -200f)
         val titleFadeAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_title, "alpha", 0f)
 
-        val subtitleRaiseAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_subtitle, "translationY", -200f)
         val subtitleFadeAnim = ObjectAnimator.ofFloat(TextView_menu_fragment_subtitle, "alpha", 0f)
 
         val animatorSet = AnimatorSet()
         animatorSet.playTogether(
-            portraitRaiseAnim,
             portraitFadeAnim,
-            titleRaiseAnim,
             titleFadeAnim,
-            subtitleRaiseAnim,
             subtitleFadeAnim
         )
 
-        animatorSet.duration = 200
+        animatorSet.duration = 100
 
 
         animatorSet.start()

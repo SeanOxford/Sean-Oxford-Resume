@@ -43,7 +43,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
 
     override fun onStart() {
         super.onStart()
-        mBus.post(OttoBusClasses.MenuFragmentReturnToFragmentEvent())
+        mBus.post(OttoBusClasses.MenuFragmentReturnToMenuEvent())
     }
 
 
@@ -64,6 +64,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
 
 
     override fun onMenuItemSelected(title: String) {
+        Log.d("nnn", String.format("item selected?????"))
         mBus.post(OttoBusClasses.MenuFragmentItemSelectedEvent(title))
     }
 

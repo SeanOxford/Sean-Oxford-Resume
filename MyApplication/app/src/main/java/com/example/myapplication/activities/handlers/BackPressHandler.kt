@@ -1,8 +1,6 @@
 package com.example.myapplication.activities.handlers
 
-import android.app.Activity
 import android.app.Application
-import android.util.Log
 import com.example.myapplication.MyApp
 import com.example.myapplication.util.OttoBusClasses
 import com.squareup.otto.Bus
@@ -46,7 +44,7 @@ class BackPressHandler(app: Application?) {
 
     fun executeCustomBehavior(){
         when (mBackPressBehavior){
-            BEHAVIOR_BACK_TO_MENU -> mBus.post(OttoBusClasses.AboutMeFragmentGoBackEvent())
+            BEHAVIOR_BACK_TO_MENU -> mBus.post(OttoBusClasses.InfoFragmentGoBackEvent())
         }
     }
 

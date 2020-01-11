@@ -2,35 +2,14 @@ package com.example.myapplication.views
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.util.Log
-import android.view.View
-import android.widget.RelativeLayout
-import androidx.core.animation.addListener
 import androidx.core.view.get
 import androidx.core.view.size
 import com.example.myapplication.R
 import kotlinx.android.synthetic.main.layout_about_me_fragment.view.*
 
-public class AboutMeView(context: Context?, callback: AboutMeViewCallback) : RelativeLayout(context) {
-
-    val mCallback = callback
-
-    interface AboutMeViewCallback {
-        fun anythingClicked()
-        fun animateOutComplete()
-
-    }
-
-    init {
-        View.inflate(context, R.layout.layout_about_me_fragment, this)
-        LinearLayout_about_me_text_container.setOnClickListener {
-            mCallback.anythingClicked()
-        }
-        animateIn()
-    }
-
-
-    private fun animateIn(){
+public class AboutMeView(context: Context?, callback: InfoFragmentViewCallback) :
+    AbsInfoFragmentView(context, callback) {
+    override fun animateIn() {
         val fadeSpeed = 500L
 
         val bgFadeIn = ObjectAnimator.ofFloat(FrameLayout_about_me_bg, "alpha", 0f, 1f)
@@ -52,18 +31,9 @@ public class AboutMeView(context: Context?, callback: AboutMeViewCallback) : Rel
         }
     }
 
-
-    public fun animateOut(){
-        val viewFadeOut = ObjectAnimator.ofFloat(FrameLayout_about_me_bg, "alpha", 1f, 0f)
-        viewFadeOut.duration = 500
-        viewFadeOut.addListener({
-            mCallback.animateOutComplete()})
-        viewFadeOut.start()
-
-
-
+    override fun getLayout(): Int {
+        return R.layout.layout_about_me_fragment
     }
-
 
 
 }
