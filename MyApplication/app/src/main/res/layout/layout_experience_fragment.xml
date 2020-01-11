@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout_experience_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:id="@+id/FrameLayout_experience_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ImageView_experience_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sincerely" />
+
+        <View
+            android:id="@+id/View_experience_fade_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#bb125A91" />
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_about_me_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/base_margin">
+
+        <TextView
+            android:id="@+id/TextView_about_me_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="Experience"
+            android:layout_marginTop="@dimen/half_margin"
+            android:textColor="@color/about_me_text"
+            android:layout_marginBottom="@dimen/base_margin"
+            android:textSize="60dp" />
+
+        <TextView
+            android:id="@+id/TextView_about_me_location_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="Sincerely Inc."
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/about_me_text"
+            android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+
+
+        <TextView
+            android:id="@+id/TextView_about_me_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/half_margin"
+            android:includeFontPadding="false"
+            android:text="Mar 2015 - Feb 2019"
+            android:textColor="@color/about_me_text"
+            android:textSize="12dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/LinearLayout_experience_fragment_position_container"
+            >
+
+        <TextView
+            android:id="@+id/TextView_about_me_interests_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Android Lead"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="6dp"
+            android:textStyle="bold"
+            android:textColor="@color/about_me_text"
+            android:textSize="20dp" />
+
+
+            <ImageView
+                android:layout_width="@dimen/experience_fragment_app_dimen"
+                android:layout_height="@dimen/experience_fragment_app_dimen"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/ink"
+
+                />
+
+            <ImageView
+                android:layout_width="@dimen/experience_fragment_app_dimen"
+                android:layout_height="@dimen/experience_fragment_app_dimen"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/posta"
+
+                />
+
+        </LinearLayout>
+
+
+        
+
+        <TextView
+            android:id="@+id/TextView_experience_fragment_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="26dp"
+            android:text=""
+            android:textColor="@color/about_me_text"
+            android:textSize="14dp" />
+
+
+        <TextView
+            android:id="@+id/TextView_experience_fragment_ms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="Mobile Sentience, LLC"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/about_me_text"
+            android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+
+
+        <TextView
+            android:id="@+id/TextView_experience_fragment_ms_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/half_margin"
+            android:includeFontPadding="false"
+            android:text="May 2013 - Oct 2014"
+            android:textColor="@color/about_me_text"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/TextView_experience_fragment_ms_pos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Android Dev"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="6dp"
+            android:textStyle="bold"
+            android:textColor="@color/about_me_text"
+            android:textSize="20dp" />
+
+
+        <TextView
+            android:id="@+id/TextView_experience_fragment_ms_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/half_margin"
+            android:text=""
+            android:textColor="@color/about_me_text"
+            android:textSize="14dp" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -15,13 +15,11 @@ abstract class AbsInfoFragmentView(context: Context?, callback: InfoFragmentView
 
     }
 
-    val mCallback = callback
+    private val mCallback = callback
 
 
     init {
         View.inflate(context, getLayout(), this)
-        LinearLayout_about_me_text_container.setOnClickListener {
-        }
         animateIn()
     }
 
