@@ -7,6 +7,7 @@ import com.example.myapplication.R
 
 class FragmentUtil {
 
+
     companion object {
         val MAIN_ACTIVITY_FRAGMENT_CONTAINER_ID = R.id.MainActivity_Fragment_Container
 

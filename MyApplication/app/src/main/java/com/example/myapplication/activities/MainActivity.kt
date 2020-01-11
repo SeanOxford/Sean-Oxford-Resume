@@ -8,7 +8,9 @@ import com.squareup.otto.Subscribe
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.android.material.appbar.AppBarLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import com.example.myapplication.fragments.InfoFragmentFragment
+import androidx.fragment.app.Fragment
+import com.example.myapplication.fragments.AboutMeFragment
+import com.example.myapplication.fragments.ExperienceFragment
 import com.example.myapplication.util.FragmentUtil
 import com.example.myapplication.views.ToolBarCustomView
 
@@ -17,7 +19,7 @@ class MainActivity : BaseActivity() {
 
 
     private var mToolbar: ToolBarCustomView? = null
-
+    private var mPendingFragmentTitle = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +59,17 @@ class MainActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(show)
     }
 
+    private fun handleFragmentSelected(title: String){
+        var fragment: Fragment = Fragment()
+        when (title){
+            MenuFragment.ABOUT_ME_STRING -> fragment = AboutMeFragment()
+            MenuFragment.EXPERIENCE_STRING -> fragment = ExperienceFragment()
+        }
+
+        FragmentUtil.changeFragment(supportFragmentManager, fragment)
+
+    }
+
 
     @Subscribe
     public fun onInfoFragmentGoBackEvent(e: OttoBusClasses.InfoFragmentGoBackEvent) {
@@ -67,6 +80,7 @@ class MainActivity : BaseActivity() {
     public fun onMenuFragmentItemSelectedEvent(e: OttoBusClasses.MenuFragmentItemSelectedEvent) {
         Activity_AppBarLayout.setExpanded(false, true)
         mToolbar?.setTitle(e.title)
+        mPendingFragmentTitle = e.title
     }
 
     @Subscribe
@@ -79,13 +93,13 @@ class MainActivity : BaseActivity() {
     @Subscribe
     public fun onMenuFragmentExitAnimationFinishedEvent(e: OttoBusClasses.MenuFragmentExitAnimationFinishedEvent) {
         showToolbar(true)
-        FragmentUtil.changeFragment(supportFragmentManager, InfoFragmentFragment())
+        handleFragmentSelected(mPendingFragmentTitle)
         mToolbar?.fadeInTitle()
     }
 
     @Subscribe
     public fun onReturnToMenuEvent(e: OttoBusClasses.ReturnToMenuEvent) {
-
+        mPendingFragmentTitle = ""
     }
 
 

@@ -13,16 +13,16 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
 
 
 
-    val PERSONAL_INFO_STRING = "Personal Info"
-    val EXPERIENCE_STRING = "Experience"
-    val LINKEDIN_STRING = "LinkedIn"
-    val SKILLS_STRING = "Skills"
-    val SCHEDULE_INTERVIEW_STRING = "Schedule an Interview"
-    val EXERCISES_STRING = "Exercises"
-
     private var mView: MenuFragmentView? = null
 
     companion object {
+        const val ABOUT_ME_STRING = "Personal Info"
+        const val EXPERIENCE_STRING = "Experience"
+        const val LINKEDIN_STRING = "LinkedIn"
+        const val SKILLS_STRING = "Skills"
+        const val SCHEDULE_INTERVIEW_STRING = "Schedule an Interview"
+        const val EXERCISES_STRING = "Exercises"
+
         fun create(): MenuFragment = MenuFragment()
     }
 
@@ -50,7 +50,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
 
     private fun createMenuInfo() :  ArrayList<MenuFragmentView.MenuItem>{
         val menuItemList = ArrayList<MenuFragmentView.MenuItem>()
-        menuItemList.add(MenuFragmentView.MenuItem(PERSONAL_INFO_STRING, R.drawable.menu_icon_about_me))
+        menuItemList.add(MenuFragmentView.MenuItem(ABOUT_ME_STRING, R.drawable.menu_icon_about_me))
         menuItemList.add(MenuFragmentView.MenuItem(EXPERIENCE_STRING, R.drawable.menu_icon_experience))
         menuItemList.add(MenuFragmentView.MenuItem(LINKEDIN_STRING, R.drawable.menu_icon_linkedin))
         menuItemList.add(MenuFragmentView.MenuItem(SKILLS_STRING, R.drawable.menu_icon_skills))

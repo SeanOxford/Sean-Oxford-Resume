@@ -45,13 +45,12 @@ abstract class AbsInfoFragment : BaseFragment(), AbsInfoFragmentView.InfoFragmen
     abstract fun getMainView() : AbsInfoFragmentView
 
 
-    inner class InfoFragmentOttoBusHolder() {
+    inner class InfoFragmentOttoBusHolder{
         @Subscribe
         public fun onAboutMeFragmentGoBackEvent(e: OttoBusClasses.InfoFragmentGoBackEvent) {
             mView?.animateOut()
 
         }
-
     }
 
 
