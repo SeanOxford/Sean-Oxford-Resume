@@ -1,7 +1,6 @@
 package com.example.myapplication.activities
 
 import android.os.Bundle
-import com.example.myapplication.R
 import com.example.myapplication.fragments.MenuFragment
 import com.example.myapplication.util.OttoBusClasses
 import com.squareup.otto.Subscribe
@@ -12,7 +11,13 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.fragments.AboutMeFragment
 import com.example.myapplication.fragments.ExperienceFragment
 import com.example.myapplication.util.FragmentUtil
+import com.example.myapplication.views.ExperienceFragmentView
 import com.example.myapplication.views.ToolBarCustomView
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
+import com.example.myapplication.R
+import com.example.myapplication.fragments.SkillsFragment
 
 
 class MainActivity : BaseActivity() {
@@ -54,16 +59,17 @@ class MainActivity : BaseActivity() {
         sfm.commit()
     }
 
-    private fun showToolbar(show: Boolean){
+    private fun showToolbar(show: Boolean) {
         supportActionBar?.setHomeButtonEnabled(show)
         supportActionBar?.setDisplayHomeAsUpEnabled(show)
     }
 
-    private fun handleFragmentSelected(title: String){
+    private fun handleFragmentSelected(title: String) {
         var fragment: Fragment = Fragment()
-        when (title){
+        when (title) {
             MenuFragment.ABOUT_ME_STRING -> fragment = AboutMeFragment()
             MenuFragment.EXPERIENCE_STRING -> fragment = ExperienceFragment()
+            MenuFragment.SKILLS_STRING -> fragment = SkillsFragment()
         }
 
         FragmentUtil.changeFragment(supportFragmentManager, fragment)
@@ -100,6 +106,23 @@ class MainActivity : BaseActivity() {
     @Subscribe
     public fun onReturnToMenuEvent(e: OttoBusClasses.ReturnToMenuEvent) {
         mPendingFragmentTitle = ""
+    }
+
+    @Subscribe
+    public fun onGoToAppStoreEvent(e: OttoBusClasses.GoToAppStoreEvent) {
+        Log.d("nnn", String.format("got?"))
+        var url = ""
+        when (e.appId) {
+            ExperienceFragmentView.INK_CLICK_ID -> url =
+                "https://play.google.com/store/apps/details?id=com.sincerely.android.ink"
+            ExperienceFragmentView.POSTAGRAM_CLICK_ID -> url =
+                "https://play.google.com/store/apps/details?id=com.sincerely.android.postagram"
+        }
+
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
+
+
     }
 
 

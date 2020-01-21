@@ -13,4 +13,6 @@ public class OttoBusClasses {
 
     public class ReturnToMenuEvent
 
+    public class GoToAppStoreEvent(val appId: Int)
+
 }

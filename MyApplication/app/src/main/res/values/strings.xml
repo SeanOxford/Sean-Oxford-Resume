@@ -5,9 +5,8 @@
     <string name="TextView_fib_fragment_scale" formatted="false">Scale: %.18f</string>
 
 
-    <string name="experience_fragment_ms_list">UX Design, Vector Illustration, Animation, Iconography, Implementation\nApp-Web Realtime Syncing E-Commerce App Development\nEnd-User Dynamically Generated Webpage Feature\nMarketing and Promotional Materials</string>
-
-    <string name="experience_fragment_sincerely_list">Complete development for four large-scale native Android apps to shipment\nWorked closely with back-end, iOS, marketing and design teams\nManaged sprints and feature priority\nFacilitated QA Procedures\n</string>
+    <string name="experience_fragment_ms_list">UX Design, Vector Illustration, Animation, Iconography, and Implementation\nApp-Web Realtime Syncing E-Commerce App Development\nEnd-User Dynamically Generated Webpage Feature\nMarketing and Promotional Materials</string>
+    <string name="experience_fragment_sincerely_list">Complete development on four large-scale native Android apps to shipment\nWorked closely with back-end, iOS, marketing and design teams\nManaged sprints and feature priority\nFacilitated QA Procedures\n</string>
 
 
 

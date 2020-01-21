@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/RelativeLayout_experience_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <FrameLayout
-        android:id="@+id/FrameLayout_info_fragment_bg"
+        android:id="@+id/FrameLayout_skills_fragment_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/ImageView_experience_background"
+            android:id="@+id/ImageView_skills_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/sincerely" />
+            android:src="@drawable/code_bg" />
 
         <View
             android:id="@+id/View_experience_fade_cover"
@@ -39,142 +37,125 @@
             android:paddingLeft="@dimen/base_margin">
 
             <TextView
-                android:id="@+id/TextView_experience_fragment_title"
+                android:id="@+id/TextView_skills_fragment_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/half_margin"
                 android:layout_marginBottom="@dimen/base_margin"
                 android:alpha="0"
                 android:fontFamily="sans-serif-light"
-                android:text="Experience"
+                android:text="Skills"
                 android:textColor="@color/info_fragment_text"
                 android:textSize="60dp" />
 
             <TextView
-                android:id="@+id/TextView_experience_fragment_sin_title"
+                android:id="@+id/TextView_skills_prof_languages_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0"
                 android:fontFamily="sans-serif-light"
-                android:includeFontPadding="false"
-                android:text="Sincerely Inc."
+                android:text="Proficient Languages"
                 android:textColor="@color/info_fragment_text"
                 android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
 
-
             <TextView
-                android:id="@+id/TextView_experience_fragment_sin_date"
+                android:id="@+id/TextView_skills_prof_languages"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/base_margin"
                 android:alpha="0"
-                android:includeFontPadding="false"
-                android:text="Mar 2015 - Feb 2019"
+                android:text="Java, Kotlin"
                 android:textColor="@color/info_fragment_text"
-                android:textSize="12dp" />
-
-            <LinearLayout
-                android:id="@+id/LinearLayout_experience_fragment_position_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextView_experience_sin_pos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="Android Lead"
-                    android:textColor="@color/info_fragment_text"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-
-                <ImageView
-                    android:id="@+id/ImageView_experience_fragment_ink"
-                    android:layout_width="@dimen/experience_fragment_app_dimen"
-                    android:layout_height="@dimen/experience_fragment_app_dimen"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="6dp"
-                    android:src="@drawable/ink" />
-
-                <ImageView
-                    android:id="@+id/ImageView_experience_fragment_postagram"
-                    android:layout_width="@dimen/experience_fragment_app_dimen"
-                    android:layout_height="@dimen/experience_fragment_app_dimen"
-                    android:layout_marginTop="3dp"
-                    android:src="@drawable/posta" />
-
-            </LinearLayout>
+                android:textSize="@dimen/about_me_fragment_text_size" />
 
 
             <TextView
-                android:id="@+id/TextView_experience_fragment_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginBottom="26dp"
-                android:alpha="0"
-                android:text=""
-
-                android:textColor="@color/info_fragment_text"
-                android:textSize="14dp" />
-
-
-            <TextView
-                android:id="@+id/TextView_experience_fragment_ms"
+                android:id="@+id/TextView_skills_languages_used_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0"
                 android:fontFamily="sans-serif-light"
-                android:includeFontPadding="false"
-                android:text="Mobile Sentience, LLC"
+                android:text="Languages I've used"
 
                 android:textColor="@color/info_fragment_text"
                 android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
 
+            <TextView
+                android:id="@+id/TextView_skills_languages_used"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:alpha="0"
+                android:text="C++, Objective C, C#, CSS/HTML, Javascript, JSP, PHP,  XML, LUA, , , SQL, , , Quenya"
+                android:textColor="@color/info_fragment_text"
+                android:textSize="@dimen/about_me_fragment_text_size" />
 
             <TextView
-                android:id="@+id/TextView_experience_fragment_ms_date"
+                android:id="@+id/TextView_skills_android_libraries_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0"
+                android:fontFamily="sans-serif-light"
+
+                android:text="Android Libraries"
+                android:textColor="@color/info_fragment_text"
+                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+
+            <TextView
+                android:id="@+id/TextView_skills_android_libraries"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:alpha="0"
+                android:text="RxJava, Dagger 2, Glide, OttoBus, IcePick, Parceler, OkHTTP, GSON, RetroFit, FilePicker "
+                android:textColor="@color/info_fragment_text"
+                android:textSize="@dimen/about_me_fragment_text_size" />
+
+
+            <TextView
+                android:id="@+id/TextView_skills_android_apis_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0"
+                android:fontFamily="sans-serif-light"
+                android:text="APIs"
+                android:textColor="@color/info_fragment_text"
+                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+
+            <TextView
+                android:id="@+id/TextView_skills_apis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:alpha="0"
+                android:text="Fabric.io, Mixpanel, LeanPlum, Firebase, Braze, Facebook, Retrofit, Google Maps, Google Places, Urban Airship, Sincerely Inc."
+                android:textColor="@color/info_fragment_text"
+                android:textSize="@dimen/about_me_fragment_text_size" />
+
+
+            <TextView
+                android:id="@+id/TextView_skills_other_technologies_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0"
+                android:fontFamily="sans-serif-light"
+
+                android:text="Other Technologies"
+                android:textColor="@color/info_fragment_text"
+                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+
+            <TextView
+                android:id="@+id/TextView_skills_other_technologies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/half_margin"
                 android:alpha="0"
-                android:includeFontPadding="false"
-                android:text="May 2013 - Oct 2014"
-
+                android:text="Git, Gradle, Adobe Photoshop"
                 android:textColor="@color/info_fragment_text"
-                android:textSize="12dp" />
-
-            <TextView
-                android:id="@+id/TextView_experience_fragment_ms_pos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
-                android:alpha="0"
-                android:text="Android Dev"
-                android:textColor="@color/info_fragment_text"
-
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/TextView_experience_fragment_ms_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginBottom="@dimen/half_margin"
-                android:alpha="0"
-
-                android:text=""
-                android:textColor="@color/info_fragment_text"
-                android:textSize="14dp" />
+                android:textSize="@dimen/about_me_fragment_text_size" />
 
 
         </LinearLayout>
-
     </ScrollView>
 
 </RelativeLayout>

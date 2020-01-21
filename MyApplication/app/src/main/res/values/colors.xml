@@ -3,5 +3,5 @@
     <color name="colorPrimary">#1FA3CA</color>
     <color name="colorPrimaryDark">#125A91</color>
     <color name="colorAccent">#1FA3CA</color>
-    <color name="about_me_text">#FFFFFF</color>
+    <color name="info_fragment_text">#FFFFFF</color>
 </resources>
