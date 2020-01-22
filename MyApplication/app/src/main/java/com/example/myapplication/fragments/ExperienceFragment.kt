@@ -1,9 +1,9 @@
 package com.example.myapplication.fragments
 
-import com.example.myapplication.R
+import android.view.View
 import com.example.myapplication.util.OttoBusClasses
 import com.example.myapplication.views.AbsInfoFragmentView
-import com.example.myapplication.views.ExperienceFragmentView
+import com.example.myapplication.views.fragmentViews.ExperienceFragmentView
 
 class ExperienceFragment : AbsInfoFragment(), ExperienceFragmentView.ExperienceFragmentViewCallback{
 

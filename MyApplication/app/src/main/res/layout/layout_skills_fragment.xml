@@ -34,125 +34,66 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:paddingRight="@dimen/half_margin"
             android:paddingLeft="@dimen/base_margin">
 
             <TextView
                 android:id="@+id/TextView_skills_fragment_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/half_margin"
-                android:layout_marginBottom="@dimen/base_margin"
-                android:alpha="0"
-                android:fontFamily="sans-serif-light"
-                android:text="Skills"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="60dp" />
+                style="@style/info_fragment_main_title_style"
+                android:text="Skills" />
 
             <TextView
                 android:id="@+id/TextView_skills_prof_languages_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:fontFamily="sans-serif-light"
-                android:text="Proficient Languages"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+                style="@style/info_fragment_title_style"
+                android:text="Proficient Languages" />
 
             <TextView
                 android:id="@+id/TextView_skills_prof_languages"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/base_margin"
-                android:alpha="0"
-                android:text="Java, Kotlin"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_text_size" />
+                style="@style/info_fragment_desc_style"
+                android:text="Java, Kotlin" />
 
 
             <TextView
                 android:id="@+id/TextView_skills_languages_used_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:fontFamily="sans-serif-light"
-                android:text="Languages I've used"
-
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+                style="@style/info_fragment_title_style"
+                android:text="Languages I've used" />
 
             <TextView
                 android:id="@+id/TextView_skills_languages_used"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/base_margin"
-                android:alpha="0"
-                android:text="C++, Objective C, C#, CSS/HTML, Javascript, JSP, PHP,  XML, LUA, , , SQL, , , Quenya"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_text_size" />
+                style="@style/info_fragment_desc_style"
+                android:text="C++, Objective C, C#, CSS/HTML, Javascript, JSP, PHP,  XML, LUA, SQL, Quenya" />
 
             <TextView
                 android:id="@+id/TextView_skills_android_libraries_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:fontFamily="sans-serif-light"
-
-                android:text="Android Libraries"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+                style="@style/info_fragment_title_style"
+                android:text="Android Libraries" />
 
             <TextView
                 android:id="@+id/TextView_skills_android_libraries"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/base_margin"
-                android:alpha="0"
-                android:text="RxJava, Dagger 2, Glide, OttoBus, IcePick, Parceler, OkHTTP, GSON, RetroFit, FilePicker "
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_text_size" />
+                style="@style/info_fragment_desc_style"
+                android:text="RxJava, Dagger 2, Glide, OttoBus, IcePick, Parceler, OkHTTP, GSON, RetroFit, FilePicker " />
 
 
             <TextView
                 android:id="@+id/TextView_skills_android_apis_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:fontFamily="sans-serif-light"
-                android:text="APIs"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+                style="@style/info_fragment_title_style"
+                android:text="APIs" />
 
             <TextView
                 android:id="@+id/TextView_skills_apis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/base_margin"
-                android:alpha="0"
-                android:text="Fabric.io, Mixpanel, LeanPlum, Firebase, Braze, Facebook, Retrofit, Google Maps, Google Places, Urban Airship, Sincerely Inc."
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_text_size" />
+                style="@style/info_fragment_desc_style"
+                android:text="Fabric.io, Mixpanel, LeanPlum, Firebase, Braze, Facebook, Retrofit, Google Maps, Google Places, Urban Airship, Sincerely Inc." />
 
 
             <TextView
                 android:id="@+id/TextView_skills_other_technologies_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:fontFamily="sans-serif-light"
-
-                android:text="Other Technologies"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+                style="@style/info_fragment_title_style"
+                android:text="Other Technologies" />
 
             <TextView
                 android:id="@+id/TextView_skills_other_technologies"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/half_margin"
-                android:alpha="0"
-                android:text="Git, Gradle, Adobe Photoshop"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_text_size" />
+                style="@style/info_fragment_desc_style"
+                android:text="Git, Gradle, Adobe Photoshop" />
 
 
         </LinearLayout>

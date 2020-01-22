@@ -1,8 +1,9 @@
-package com.example.myapplication.views
+package com.example.myapplication.views.fragmentViews
 
 import android.content.Context
 import com.example.myapplication.R
 import com.example.myapplication.util.TextUtil
+import com.example.myapplication.views.AbsInfoFragmentView
 import kotlinx.android.synthetic.main.layout_experience_fragment.view.*
 
 class ExperienceFragmentView(
@@ -22,7 +23,7 @@ class ExperienceFragmentView(
         fun onAppClicked(appId: Int)
     }
 
-    val mExpCallback = callback
+    private val mExpCallback = callback
 
 
     init {

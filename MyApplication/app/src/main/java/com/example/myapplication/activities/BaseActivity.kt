@@ -2,6 +2,7 @@ package com.example.myapplication.activities
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MyApp
 import com.example.myapplication.activities.handlers.BackPressHandler
@@ -41,17 +42,24 @@ public abstract class BaseActivity : AppCompatActivity() {
 
 
     override fun onBackPressed() {
-        if(mBackPressHandler!!.isCustomBehavior()){
+        if (mBackPressHandler!!.isCustomBehavior()) {
             mBackPressHandler?.executeCustomBehavior()
         } else {
             super.onBackPressed()
         }
-
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
 
+            android.R.id.home -> {
+                mBackPressHandler?.executeCustomBehavior()
 
-
+                Log.d("nnn", String.format("FUCKINGINGN"))
+            }
+        }
+        return true
+    }
 
 
 }

@@ -17,4 +17,39 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+
+    <style name="info_fragment_main_title_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/half_margin</item>
+        <item name="android:layout_marginBottom">@dimen/base_margin</item>
+
+        <item name="android:textColor">@color/info_fragment_text</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:alpha">0</item>
+        <item name="android:textSize">60dp</item>
+    </style>
+
+    <style name="info_fragment_title_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/info_fragment_text</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:alpha">0</item>
+        <item name="android:textSize">@dimen/about_me_fragment_subtitle_text_size</item>
+    </style>
+
+    <style name="info_fragment_desc_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/base_margin</item>
+        <item name="android:textColor">@color/info_fragment_text</item>
+        <item name="android:alpha">0</item>
+        <item name="android:textSize">@dimen/about_me_fragment_text_size</item>
+    </style>
+
+
+
+
 </resources>

@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.views.fragmentViews.MenuFragmentView
 import kotlinx.android.synthetic.main.menu_grid_view.view.*
 
 class MenuFragmentGridRecyclerView(

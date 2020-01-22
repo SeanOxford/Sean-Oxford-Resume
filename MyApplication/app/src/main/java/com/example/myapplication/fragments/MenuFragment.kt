@@ -1,17 +1,19 @@
 package com.example.myapplication.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
 import com.example.myapplication.util.OttoBusClasses
-import com.example.myapplication.views.MenuFragmentView
+import com.example.myapplication.views.fragmentViews.BaseFragmentView
+import com.example.myapplication.views.fragmentViews.MenuFragmentView
 
 class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks {
 
-
+    override fun getMainView(): BaseFragmentView {
+       return MenuFragmentView(context, createMenuInfo(), this)
+    }
 
     private var mView: MenuFragmentView? = null
 
@@ -33,7 +35,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
         savedInstanceState: Bundle?
     ): View? {
         if(mView == null){
-            mView = MenuFragmentView(context, createMenuInfo(), this)
+            mView = getMainView() as MenuFragmentView
         } else {
             mView?.animateIn()
         }

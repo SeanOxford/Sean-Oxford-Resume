@@ -1,14 +1,13 @@
 package com.example.myapplication.fragments
 
 import com.example.myapplication.views.AbsInfoFragmentView
-import com.example.myapplication.views.ExperienceFragmentView
-import com.example.myapplication.views.SkillsView
+import com.example.myapplication.views.fragmentViews.SkillsFragmentView
 
 class SkillsFragment : AbsInfoFragment() {
 
 
     override fun getMainView(): AbsInfoFragmentView {
-        return SkillsView(context, this)
+        return SkillsFragmentView(context, this)
     }
 
 

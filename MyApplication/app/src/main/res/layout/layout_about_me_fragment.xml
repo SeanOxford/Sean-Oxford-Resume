@@ -98,108 +98,64 @@
 
             <TextView
                 android:id="@+id/TextView_about_me_location_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:text="Location:"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+                style="@style/info_fragment_title_style"
+                android:text="Location:" />
 
             <TextView
                 android:id="@+id/TextView_about_me_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/half_margin"
-                android:alpha="0"
-                android:text="San Francisco, CA"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_text_size" />
+                style="@style/info_fragment_desc_style"
+                android:text="San Francisco, CA" />
 
             <TextView
                 android:id="@+id/TextView_about_me_interests_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:text="Interests:"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+                style="@style/info_fragment_title_style"
+                android:text="Interests:" />
 
             <TextView
                 android:id="@+id/TextView_about_me_interests"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/half_margin"
-                android:alpha="0"
+                style="@style/info_fragment_desc_style"
                 android:text=" \u2022Making celtic music electronically\n
 \u2022Making electronic music acoustically\n
 \u2022Androidery\n
 \u2022Vidya games\n
 \u2022Online Star Wars debates
-"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="18dp" />
+" />
 
             <TextView
                 android:id="@+id/TextView_about_me_email_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:fontFamily="sans-serif-light"
-                android:text="Email:"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+                style="@style/info_fragment_title_style"
+                android:text="Email:" />
 
             <TextView
                 android:id="@+id/TextView_about_me_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/half_margin"
-                android:alpha="0"
-                android:text="oxford.sean@gmail.com"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_text_size" />
+                style="@style/info_fragment_desc_style"
+                android:text="oxford.sean@gmail.com" />
 
             <TextView
                 android:id="@+id/TextView_about_me_phone_number_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:fontFamily="sans-serif-light"
-                android:text="Phone Number:"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+                style="@style/info_fragment_title_style"
+
+                android:text="Phone Number:" />
 
             <TextView
                 android:id="@+id/TextView_about_me_phone_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/half_margin"
-                android:alpha="0"
-                android:text="(760) 504-7920"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_text_size" />
+                style="@style/info_fragment_desc_style"
+                android:text="(760) 504-7920" />
 
 
             <TextView
                 android:id="@+id/TextView_about_me_linkedin_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                android:text="LinkedIn:"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
+                style="@style/info_fragment_title_style"
+                android:text="LinkedIn:" />
 
-            <TextView
-                android:id="@+id/TextView_about_me_linkedin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:id="@+id/ImageView_about_me_linkedin"
                 android:alpha="0"
-                android:text="https://www.linkedin.com/in/sean-oxford-943427103"
-                android:textColor="@color/info_fragment_text"
-                android:textSize="@dimen/about_me_fragment_text_size" />
+                android:src="@drawable/linked_in_button"
+                android:layout_marginBottom="@dimen/base_margin"
+                 />
         </LinearLayout>
 
     </ScrollView>

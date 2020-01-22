@@ -155,7 +155,6 @@
                 android:alpha="0"
                 android:text="Android Dev"
                 android:textColor="@color/info_fragment_text"
-
                 android:textSize="20dp"
                 android:textStyle="bold" />
 

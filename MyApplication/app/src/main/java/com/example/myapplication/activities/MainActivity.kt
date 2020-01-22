@@ -1,23 +1,21 @@
 package com.example.myapplication.activities
 
-import android.os.Bundle
-import com.example.myapplication.fragments.MenuFragment
-import com.example.myapplication.util.OttoBusClasses
-import com.squareup.otto.Subscribe
-import kotlinx.android.synthetic.main.activity_main.*
-import com.google.android.material.appbar.AppBarLayout
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.fragment.app.Fragment
-import com.example.myapplication.fragments.AboutMeFragment
-import com.example.myapplication.fragments.ExperienceFragment
-import com.example.myapplication.util.FragmentUtil
-import com.example.myapplication.views.ExperienceFragmentView
-import com.example.myapplication.views.ToolBarCustomView
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.fragment.app.Fragment
 import com.example.myapplication.R
-import com.example.myapplication.fragments.SkillsFragment
+import com.example.myapplication.fragments.*
+import com.example.myapplication.util.FragmentUtil
+import com.example.myapplication.util.OttoBusClasses
+import com.example.myapplication.views.ToolBarCustomView
+import com.example.myapplication.views.fragmentViews.ExperienceFragmentView
+import com.google.android.material.appbar.AppBarLayout
+import com.squareup.otto.Subscribe
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity() {
@@ -36,9 +34,6 @@ class MainActivity : BaseActivity() {
         supportActionBar?.customView = mToolbar
         supportActionBar?.setDisplayShowCustomEnabled(true)
 
-
-
-
         initFragment()
         Activity_collapse_bar.title = " "
 
@@ -50,8 +45,8 @@ class MainActivity : BaseActivity() {
                 return false
             }
         })
-
     }
+
 
     private fun initFragment() {
         val sfm = supportFragmentManager.beginTransaction()
@@ -64,16 +59,24 @@ class MainActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(show)
     }
 
-    private fun handleFragmentSelected(title: String) {
+
+    private fun goToLinkedIn() {
+        val uriUrl = Uri.parse("https://www.linkedin.com/in/sean-oxford-943427103/")
+        val launchBrowser = Intent(Intent.ACTION_VIEW, uriUrl)
+        startActivity(launchBrowser)
+    }
+
+
+    private fun handleMenuItemSelected(title: String) {
         var fragment: Fragment = Fragment()
         when (title) {
             MenuFragment.ABOUT_ME_STRING -> fragment = AboutMeFragment()
             MenuFragment.EXPERIENCE_STRING -> fragment = ExperienceFragment()
             MenuFragment.SKILLS_STRING -> fragment = SkillsFragment()
+            MenuFragment.LINKEDIN_STRING -> {fragment = LinkedInFragment()}
         }
 
         FragmentUtil.changeFragment(supportFragmentManager, fragment)
-
     }
 
 
@@ -99,7 +102,7 @@ class MainActivity : BaseActivity() {
     @Subscribe
     public fun onMenuFragmentExitAnimationFinishedEvent(e: OttoBusClasses.MenuFragmentExitAnimationFinishedEvent) {
         showToolbar(true)
-        handleFragmentSelected(mPendingFragmentTitle)
+        handleMenuItemSelected(mPendingFragmentTitle)
         mToolbar?.fadeInTitle()
     }
 
@@ -110,7 +113,6 @@ class MainActivity : BaseActivity() {
 
     @Subscribe
     public fun onGoToAppStoreEvent(e: OttoBusClasses.GoToAppStoreEvent) {
-        Log.d("nnn", String.format("got?"))
         var url = ""
         when (e.appId) {
             ExperienceFragmentView.INK_CLICK_ID -> url =
@@ -121,8 +123,29 @@ class MainActivity : BaseActivity() {
 
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(browserIntent)
+    }
 
+    @Subscribe
+    public fun onGoToLinkedInEvent(e: OttoBusClasses.GoToLinkedInEvent) {
+        goToLinkedIn()
+    }
 
+    @Subscribe
+    public fun onEmailClickedEvent(e: OttoBusClasses.EmailClickedEvent) {
+        val emailIntent = Intent(
+            Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", "oxford.sean@gmail.com", null
+            )
+        )
+
+        startActivity(emailIntent)
+    }
+
+    @Subscribe
+    public fun onSendTextMsgEvent(e: OttoBusClasses.SendTextMsgEvent) {
+
+        val number = "17605047920"
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null)))
     }
 
 

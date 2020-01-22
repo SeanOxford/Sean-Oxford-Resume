@@ -15,4 +15,9 @@ public class OttoBusClasses {
 
     public class GoToAppStoreEvent(val appId: Int)
 
+    public class GoToLinkedInEvent
+    public class EmailClickedEvent
+    public class SendTextMsgEvent
+
+
 }

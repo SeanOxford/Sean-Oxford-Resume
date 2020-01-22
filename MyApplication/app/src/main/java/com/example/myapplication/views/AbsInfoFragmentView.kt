@@ -9,10 +9,11 @@ import android.widget.RelativeLayout
 import androidx.core.animation.addListener
 import androidx.core.view.get
 import androidx.core.view.size
+import com.example.myapplication.views.fragmentViews.BaseFragmentView
 import kotlinx.android.synthetic.main.layout_about_me_fragment.view.*
 
 abstract class AbsInfoFragmentView(context: Context?, callback: InfoFragmentViewCallback) :
-    RelativeLayout(context){
+    BaseFragmentView(context){
 
     interface InfoFragmentViewCallback {
         fun animateOutComplete()
@@ -21,11 +22,9 @@ abstract class AbsInfoFragmentView(context: Context?, callback: InfoFragmentView
     private val mCallback = callback
 
     init {
-        View.inflate(context, getLayout(), this)
         animateIn()
     }
 
-    abstract fun getLayout() : Int
 
     fun animateIn(){
         val fadeSpeed = 500L

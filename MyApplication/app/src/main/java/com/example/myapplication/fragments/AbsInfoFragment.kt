@@ -20,15 +20,13 @@ abstract class AbsInfoFragment : BaseFragment(), AbsInfoFragmentView.InfoFragmen
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mView = getMainView()
-
+        mView = getMainView() as AbsInfoFragmentView
         return mView
     }
 
     override fun onStart() {
         super.onStart()
         mBus.register(mOttoBusHolder)
-        mBus.post(OttoBusClasses.SetBackPressBehaviorEvent(BackPressHandler.BEHAVIOR_BACK_TO_MENU))
 
     }
 
@@ -42,14 +40,11 @@ abstract class AbsInfoFragment : BaseFragment(), AbsInfoFragmentView.InfoFragmen
         fragmentManager?.popBackStack()
     }
 
-    abstract fun getMainView() : AbsInfoFragmentView
-
 
     inner class InfoFragmentOttoBusHolder{
         @Subscribe
-        public fun onAboutMeFragmentGoBackEvent(e: OttoBusClasses.InfoFragmentGoBackEvent) {
+        public fun onInfoFragmentGoBackEvent(e: OttoBusClasses.InfoFragmentGoBackEvent) {
             mView?.animateOut()
-
         }
     }
 

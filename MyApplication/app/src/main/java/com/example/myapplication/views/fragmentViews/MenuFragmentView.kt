@@ -1,20 +1,18 @@
-package com.example.myapplication.views
+package com.example.myapplication.views.fragmentViews
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.graphics.Color
-import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.animation.addListener
 import com.example.myapplication.R
-import de.hdodenhof.circleimageview.CircleImageView
+import com.example.myapplication.views.MenuFragmentGridRecyclerView
 import kotlinx.android.synthetic.main.layout_menu_fragment.view.*
 
 class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, callback: MenuFragmentViewCallbacks) :
-    RelativeLayout(context), MenuFragmentGridRecyclerView.GridViewCallback {
+    BaseFragmentView(context), MenuFragmentGridRecyclerView.GridViewCallback {
+
 
     interface MenuFragmentViewCallbacks {
         fun onMenuItemSelected(title: String)
@@ -28,8 +26,11 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
 
 
     init {
-        View.inflate(context, R.layout.layout_menu_fragment, this)
         initGridView()
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.layout_menu_fragment
     }
 
 
