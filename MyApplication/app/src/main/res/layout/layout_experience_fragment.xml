@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:paddingRight="@dimen/base_margin"
             android:paddingLeft="@dimen/base_margin">
 
             <TextView
@@ -46,7 +47,7 @@
                 android:layout_marginBottom="@dimen/base_margin"
                 android:alpha="0"
                 android:fontFamily="sans-serif-light"
-                android:text="Experience"
+                android:text="@string/experience_fragment_main_title"
                 android:textColor="@color/info_fragment_text"
                 android:textSize="60dp" />
 
@@ -57,7 +58,7 @@
                 android:alpha="0"
                 android:fontFamily="sans-serif-light"
                 android:includeFontPadding="false"
-                android:text="Sincerely Inc."
+                android:text="@string/experience_fragment_sincerely_title"
                 android:textColor="@color/info_fragment_text"
                 android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
 
@@ -69,7 +70,7 @@
                 android:layout_marginBottom="@dimen/half_margin"
                 android:alpha="0"
                 android:includeFontPadding="false"
-                android:text="Mar 2015 - Feb 2019"
+                android:text="@string/experience_fragment_sincerely_date"
                 android:textColor="@color/info_fragment_text"
                 android:textSize="12dp" />
 
@@ -85,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="Android Lead"
+                    android:text="@string/experience_fragment_sincerely_position"
                     android:textColor="@color/info_fragment_text"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -117,7 +118,6 @@
                 android:layout_marginBottom="26dp"
                 android:alpha="0"
                 android:text=""
-
                 android:textColor="@color/info_fragment_text"
                 android:textSize="14dp" />
 
@@ -129,8 +129,7 @@
                 android:alpha="0"
                 android:fontFamily="sans-serif-light"
                 android:includeFontPadding="false"
-                android:text="Mobile Sentience, LLC"
-
+                android:text="@string/experience_fragment_ms_title"
                 android:textColor="@color/info_fragment_text"
                 android:textSize="@dimen/about_me_fragment_subtitle_text_size" />
 
@@ -142,8 +141,7 @@
                 android:layout_marginBottom="@dimen/half_margin"
                 android:alpha="0"
                 android:includeFontPadding="false"
-                android:text="May 2013 - Oct 2014"
-
+                android:text="@string/experience_fragment_ms_date"
                 android:textColor="@color/info_fragment_text"
                 android:textSize="12dp" />
 
@@ -153,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="6dp"
                 android:alpha="0"
-                android:text="Android Dev"
+                android:text="@string/experience_fragment_ms_position"
                 android:textColor="@color/info_fragment_text"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -166,7 +164,6 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginBottom="@dimen/half_margin"
                 android:alpha="0"
-
                 android:text=""
                 android:textColor="@color/info_fragment_text"
                 android:textSize="14dp" />

@@ -40,60 +40,60 @@
             <TextView
                 android:id="@+id/TextView_skills_fragment_title"
                 style="@style/info_fragment_main_title_style"
-                android:text="Skills" />
+                android:text="@string/skills_fragment_main_title" />
 
             <TextView
                 android:id="@+id/TextView_skills_prof_languages_title"
                 style="@style/info_fragment_title_style"
-                android:text="Proficient Languages" />
+                android:text="@string/skills_fragment_prof_languages_title" />
 
             <TextView
                 android:id="@+id/TextView_skills_prof_languages"
                 style="@style/info_fragment_desc_style"
-                android:text="Java, Kotlin" />
+                android:text="@string/skills_fragment_prof_languages" />
 
 
             <TextView
                 android:id="@+id/TextView_skills_languages_used_title"
                 style="@style/info_fragment_title_style"
-                android:text="Languages I've used" />
+                android:text="@string/skills_fragment_languages_used_title" />
 
             <TextView
                 android:id="@+id/TextView_skills_languages_used"
                 style="@style/info_fragment_desc_style"
-                android:text="C++, Objective C, C#, CSS/HTML, Javascript, JSP, PHP,  XML, LUA, SQL, Quenya" />
+                android:text="@string/skills_fragment_languages_used" />
 
             <TextView
                 android:id="@+id/TextView_skills_android_libraries_title"
                 style="@style/info_fragment_title_style"
-                android:text="Android Libraries" />
+                android:text="@string/skills_fragment_android_libraries_title" />
 
             <TextView
                 android:id="@+id/TextView_skills_android_libraries"
                 style="@style/info_fragment_desc_style"
-                android:text="RxJava, Dagger 2, Glide, OttoBus, IcePick, Parceler, OkHTTP, GSON, RetroFit, FilePicker " />
+                android:text="@string/skills_fragment_android_libraries" />
 
 
             <TextView
                 android:id="@+id/TextView_skills_android_apis_title"
                 style="@style/info_fragment_title_style"
-                android:text="APIs" />
+                android:text="@string/skills_fragment_android_apis_title" />
 
             <TextView
                 android:id="@+id/TextView_skills_apis"
                 style="@style/info_fragment_desc_style"
-                android:text="Fabric.io, Mixpanel, LeanPlum, Firebase, Braze, Facebook, Retrofit, Google Maps, Google Places, Urban Airship, Sincerely Inc." />
+                android:text="@string/skills_fragment_android_apis"/>
 
 
             <TextView
                 android:id="@+id/TextView_skills_other_technologies_title"
                 style="@style/info_fragment_title_style"
-                android:text="Other Technologies" />
+                android:text="@string/skills_fragment_android_technologies_title" />
 
             <TextView
                 android:id="@+id/TextView_skills_other_technologies"
                 style="@style/info_fragment_desc_style"
-                android:text="Git, Gradle, Adobe Photoshop" />
+                android:text="@string/skills_fragment_android_technologies" />
 
 
         </LinearLayout>

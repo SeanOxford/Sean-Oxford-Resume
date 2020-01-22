@@ -36,7 +36,6 @@
             android:id="@+id/LinearLayout_info_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
             android:layout_marginLeft="@dimen/base_margin"
             android:orientation="vertical">
 
@@ -52,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="Sean Oxford"
+                    android:text="@string/about_me_fragment_main_title"
                     android:textColor="@color/info_fragment_text"
                     android:textSize="@dimen/about_me_fragment_title_text_size" />
 
@@ -87,7 +86,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_marginTop="-0.55dp"
                         android:includeFontPadding="false"
-                        android:text="Developer"
+                        android:text="@string/about_me_fragment_developer"
                         android:textColor="@color/info_fragment_text"
                         android:textSize="22dp" />
 
@@ -99,63 +98,57 @@
             <TextView
                 android:id="@+id/TextView_about_me_location_title"
                 style="@style/info_fragment_title_style"
-                android:text="Location:" />
+                android:text="@string/about_me_fragment_location_title" />
 
             <TextView
                 android:id="@+id/TextView_about_me_location"
                 style="@style/info_fragment_desc_style"
-                android:text="San Francisco, CA" />
+                android:text="@string/about_me_fragment_location" />
 
             <TextView
                 android:id="@+id/TextView_about_me_interests_title"
                 style="@style/info_fragment_title_style"
-                android:text="Interests:" />
+                android:text="@string/about_me_fragment_interests_title" />
 
             <TextView
                 android:id="@+id/TextView_about_me_interests"
                 style="@style/info_fragment_desc_style"
-                android:text=" \u2022Making celtic music electronically\n
-\u2022Making electronic music acoustically\n
-\u2022Androidery\n
-\u2022Vidya games\n
-\u2022Online Star Wars debates
-" />
+                android:text="@string/about_me_fragment_interests" />
 
             <TextView
                 android:id="@+id/TextView_about_me_email_title"
                 style="@style/info_fragment_title_style"
-                android:text="Email:" />
+                android:text="@string/about_me_fragment_email_title" />
 
             <TextView
                 android:id="@+id/TextView_about_me_email"
                 style="@style/info_fragment_desc_style"
-                android:text="oxford.sean@gmail.com" />
+                android:text="@string/email_address" />
 
             <TextView
                 android:id="@+id/TextView_about_me_phone_number_title"
                 style="@style/info_fragment_title_style"
 
-                android:text="Phone Number:" />
+                android:text="@string/about_me_fragment_phone_title" />
 
             <TextView
                 android:id="@+id/TextView_about_me_phone_number"
                 style="@style/info_fragment_desc_style"
-                android:text="(760) 504-7920" />
+                android:text="@string/phone_number" />
 
 
             <TextView
                 android:id="@+id/TextView_about_me_linkedin_title"
                 style="@style/info_fragment_title_style"
-                android:text="LinkedIn:" />
+                android:text="@string/about_me_fragment_linkedin_title" />
 
             <ImageView
+                android:id="@+id/ImageView_about_me_linkedin"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:id="@+id/ImageView_about_me_linkedin"
-                android:alpha="0"
-                android:src="@drawable/linked_in_button"
                 android:layout_marginBottom="@dimen/base_margin"
-                 />
+                android:alpha="0"
+                android:src="@drawable/linked_in_button" />
         </LinearLayout>
 
     </ScrollView>

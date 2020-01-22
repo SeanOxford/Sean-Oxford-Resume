@@ -51,12 +51,7 @@ public abstract class BaseActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-
-            android.R.id.home -> {
-                mBackPressHandler?.executeCustomBehavior()
-
-                Log.d("nnn", String.format("FUCKINGINGN"))
-            }
+            android.R.id.home -> mBackPressHandler?.executeCustomBehavior()
         }
         return true
     }

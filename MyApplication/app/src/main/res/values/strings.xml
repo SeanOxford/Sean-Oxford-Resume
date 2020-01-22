@@ -7,6 +7,45 @@
 
     <string name="experience_fragment_ms_list">UX Design, Vector Illustration, Animation, Iconography, and Implementation\nApp-Web Realtime Syncing E-Commerce App Development\nEnd-User Dynamically Generated Webpage Feature\nMarketing and Promotional Materials</string>
     <string name="experience_fragment_sincerely_list">Complete development on four large-scale native Android apps to shipment\nWorked closely with back-end, iOS, marketing and design teams\nManaged sprints and feature priority\nFacilitated QA Procedures\n</string>
+    <string name="experience_fragment_main_title">Experience</string>
+    <string name="experience_fragment_sincerely_title">Sincerely Inc.</string>
+    <string name="experience_fragment_sincerely_date">Mar 2015 - Feb 2019</string>
+    <string name="experience_fragment_sincerely_position">Android Lead</string>
+    <string name="experience_fragment_ms_title">Mobile Sentience, LLC</string>
+    <string name="experience_fragment_ms_date">May 2013 - Oct 2014</string>
+    <string name="experience_fragment_ms_position">Android Dev</string>
+
+    <string name="about_me_fragment_main_title">Sean Oxford</string>
+    <string name="about_me_fragment_developer">Developer</string>
+    <string name="about_me_fragment_location_title">Location:</string>
+    <string name="about_me_fragment_location">San Francisco, CA</string>
+    <string name="about_me_fragment_interests_title">Interests:</string>
+    <string name="about_me_fragment_interests"> \u2022Making celtic music electronically\n
+\u2022Making electronic music acoustically\n
+\u2022Androidery\n
+\u2022Vidya games\n
+\u2022Online Star Wars debates</string>
+    <string name="about_me_fragment_email_title">Email:</string>
+    <string name="about_me_fragment_phone_title">Phone Number:</string>
+    <string name="about_me_fragment_linkedin_title">LinkedIn:</string>
+
+    <string name="skills_fragment_main_title">Skills</string>
+    <string name="skills_fragment_prof_languages_title">Proficient Languages</string>
+    <string name="skills_fragment_prof_languages">Java, Kotlin</string>
+    <string name="skills_fragment_languages_used_title">Languages I\'ve used</string>
+    <string name="skills_fragment_languages_used">C++, Objective C, C#, CSS/HTML, Javascript, JSP, PHP,  XML, LUA, SQL, Quenya</string>
+    <string name="skills_fragment_android_libraries_title">Android Libraries</string>
+    <string name="skills_fragment_android_libraries">RxJava, Dagger 2, Glide, OttoBus, IcePick, Parceler, OkHTTP, GSON, RetroFit, FilePicker </string>
+    <string name="skills_fragment_android_apis_title">APIs</string>
+    <string name="skills_fragment_android_apis">Fabric.io, Mixpanel, LeanPlum, Firebase, Braze, Facebook, Retrofit, Google Maps, Google Places, Urban Airship, Sincerely Inc.</string>
+    <string name="skills_fragment_android_technologies_title">Other Technologies</string>
+    <string name="skills_fragment_android_technologies">Git, Gradle, Adobe Photoshop</string>
+
+    <string name="phone_number">17605047920</string>
+    <string name="email_address">oxford.sean@gmail.com</string>
+    <string name="ink_url">https://play.google.com/store/apps/details?id=com.sincerely.android.ink</string>
+    <string name="postagram_url">https://play.google.com/store/apps/details?id=com.sincerely.android.postagram</string>
+    <string name="linked_in">https://www.linkedin.com/in/sean-oxford-943427103/</string>
 
 
 

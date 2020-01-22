@@ -1,6 +1,7 @@
 package com.example.myapplication.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +28,7 @@ abstract class AbsInfoFragment : BaseFragment(), AbsInfoFragmentView.InfoFragmen
     override fun onStart() {
         super.onStart()
         mBus.register(mOttoBusHolder)
-
+        mBus.post(OttoBusClasses.SetBackPressBehaviorEvent(BackPressHandler.BEHAVIOR_BACK_TO_MENU))
     }
 
     override fun onStop() {

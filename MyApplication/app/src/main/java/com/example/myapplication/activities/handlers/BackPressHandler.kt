@@ -21,8 +21,6 @@ class BackPressHandler(app: Application?) {
     }
 
 
-
-
     var mBackPressBehavior = 0
 
 
@@ -39,16 +37,13 @@ class BackPressHandler(app: Application?) {
         mBus.unregister(this)
     }
 
-    fun isCustomBehavior() : Boolean{
+    fun isCustomBehavior(): Boolean {
         return mBackPressBehavior != BEHAVIOR_DEFAULT
     }
 
-    fun executeCustomBehavior(){
-        when (mBackPressBehavior){
-            BEHAVIOR_BACK_TO_MENU -> {mBus.post(OttoBusClasses.InfoFragmentGoBackEvent())
-
-            Log.d("nnn", String.format("diucksckdk"))
-            }
+    fun executeCustomBehavior() {
+        when (mBackPressBehavior) {
+            BEHAVIOR_BACK_TO_MENU -> mBus.post(OttoBusClasses.InfoFragmentGoBackEvent())
         }
     }
 

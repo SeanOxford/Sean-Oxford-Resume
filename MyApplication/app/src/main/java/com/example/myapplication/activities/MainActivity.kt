@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.WindowManager
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
@@ -37,7 +38,6 @@ class MainActivity : BaseActivity() {
         initFragment()
         Activity_collapse_bar.title = " "
 
-
         val params = Activity_AppBarLayout.layoutParams as CoordinatorLayout.LayoutParams
         val behavior = params.behavior as AppBarLayout.Behavior?
         behavior!!.setDragCallback(object : AppBarLayout.Behavior.DragCallback() {
@@ -61,7 +61,7 @@ class MainActivity : BaseActivity() {
 
 
     private fun goToLinkedIn() {
-        val uriUrl = Uri.parse("https://www.linkedin.com/in/sean-oxford-943427103/")
+        val uriUrl = Uri.parse(resources.getString(R.string.linked_in))
         val launchBrowser = Intent(Intent.ACTION_VIEW, uriUrl)
         startActivity(launchBrowser)
     }
@@ -73,7 +73,7 @@ class MainActivity : BaseActivity() {
             MenuFragment.ABOUT_ME_STRING -> fragment = AboutMeFragment()
             MenuFragment.EXPERIENCE_STRING -> fragment = ExperienceFragment()
             MenuFragment.SKILLS_STRING -> fragment = SkillsFragment()
-            MenuFragment.LINKEDIN_STRING -> {fragment = LinkedInFragment()}
+            MenuFragment.LINKEDIN_STRING -> fragment = LinkedInFragment()
         }
 
         FragmentUtil.changeFragment(supportFragmentManager, fragment)
@@ -87,6 +87,10 @@ class MainActivity : BaseActivity() {
 
     @Subscribe
     public fun onMenuFragmentItemSelectedEvent(e: OttoBusClasses.MenuFragmentItemSelectedEvent) {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        )
         Activity_AppBarLayout.setExpanded(false, true)
         mToolbar?.setTitle(e.title)
         mPendingFragmentTitle = e.title
@@ -101,6 +105,7 @@ class MainActivity : BaseActivity() {
 
     @Subscribe
     public fun onMenuFragmentExitAnimationFinishedEvent(e: OttoBusClasses.MenuFragmentExitAnimationFinishedEvent) {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         showToolbar(true)
         handleMenuItemSelected(mPendingFragmentTitle)
         mToolbar?.fadeInTitle()
@@ -116,9 +121,9 @@ class MainActivity : BaseActivity() {
         var url = ""
         when (e.appId) {
             ExperienceFragmentView.INK_CLICK_ID -> url =
-                "https://play.google.com/store/apps/details?id=com.sincerely.android.ink"
+                resources.getString(R.string.ink_url)
             ExperienceFragmentView.POSTAGRAM_CLICK_ID -> url =
-                "https://play.google.com/store/apps/details?id=com.sincerely.android.postagram"
+                resources.getString(R.string.postagram_url)
         }
 
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -134,7 +139,7 @@ class MainActivity : BaseActivity() {
     public fun onEmailClickedEvent(e: OttoBusClasses.EmailClickedEvent) {
         val emailIntent = Intent(
             Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto", "oxford.sean@gmail.com", null
+                "mailto", resources.getString(R.string.email_address), null
             )
         )
 
@@ -143,9 +148,12 @@ class MainActivity : BaseActivity() {
 
     @Subscribe
     public fun onSendTextMsgEvent(e: OttoBusClasses.SendTextMsgEvent) {
-
-        val number = "17605047920"
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null)))
+        startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.fromParts("sms", resources.getString(R.string.phone_number), null)
+            )
+        )
     }
 
 

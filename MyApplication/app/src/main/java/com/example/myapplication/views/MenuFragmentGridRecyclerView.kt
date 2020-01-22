@@ -1,20 +1,28 @@
 package com.example.myapplication.views
 
+import android.app.Application
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.MyApp
 import com.example.myapplication.R
 import com.example.myapplication.views.fragmentViews.MenuFragmentView
+import com.squareup.otto.Bus
 import kotlinx.android.synthetic.main.menu_grid_view.view.*
+import javax.inject.Inject
 
 class MenuFragmentGridRecyclerView(
     context: Context,
     dataList: ArrayList<MenuFragmentView.MenuItem>,
     callback: GridViewCallback
 ) : RecyclerView(context) {
+
+    @Inject
+    protected lateinit var mBus: Bus
 
     interface GridViewCallback {
         fun onMenuItemSelected(title: String)
@@ -24,8 +32,9 @@ class MenuFragmentGridRecyclerView(
     val mDataList = dataList
     var mAdapter: MenuFragmentGridAdapter? = null
 
-    init {
 
+    init {
+        (context?.applicationContext as MyApp).myComponent.inject(this)
         layoutParams = FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
         layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
 

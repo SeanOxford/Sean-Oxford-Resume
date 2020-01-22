@@ -3,6 +3,7 @@ package com.example.myapplication.dagger
 import com.example.myapplication.activities.BaseActivity
 import com.example.myapplication.activities.handlers.BackPressHandler
 import com.example.myapplication.fragments.BaseFragment
+import com.example.myapplication.views.MenuFragmentGridRecyclerView
 import dagger.Component
 import javax.inject.Singleton
 
@@ -13,6 +14,7 @@ interface MyComponent {
     fun inject(baseActivity: BaseActivity)
     fun inject(baseFragment: BaseFragment)
     fun inject(backPressHandler: BackPressHandler)
+    fun inject(menuFragmentGridRecyclerView: MenuFragmentGridRecyclerView)
 
 
 }

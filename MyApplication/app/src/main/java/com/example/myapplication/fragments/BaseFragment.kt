@@ -40,7 +40,6 @@ abstract class BaseFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         mBus.register(this)
-        mBus.post(OttoBusClasses.SetBackPressBehaviorEvent(BackPressHandler.BEHAVIOR_BACK_TO_MENU))
     }
 
     override fun onStop() {
