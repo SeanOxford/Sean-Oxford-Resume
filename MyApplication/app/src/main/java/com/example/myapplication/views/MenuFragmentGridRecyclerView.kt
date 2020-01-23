@@ -3,6 +3,7 @@ package com.example.myapplication.views
 import android.app.Application
 import android.content.Context
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -46,15 +47,12 @@ class MenuFragmentGridRecyclerView(
             }
         }
 
-        initClickEating()
+
+        setNestedScrollingEnabled(false)
     }
 
 
-    private fun initClickEating() {
-        setOnTouchListener({ v, event ->
-            true
-        })
-    }
+
 
 
     inner class MenuFragmentGridAdapter : RecyclerView.Adapter<MenuViewHolder>() {

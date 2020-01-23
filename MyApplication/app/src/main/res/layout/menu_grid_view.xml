@@ -23,9 +23,10 @@
     <View
         android:layout_width="0px"
         android:layout_height="0px"
+        android:layout_marginTop="-10dp"
         android:id="@+id/View_menu_grid_view_midpoint"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="20dp"
         />
 
     <TextView
@@ -34,6 +35,7 @@
         android:id="@+id/TextView_menu_grid_view_text"
         android:layout_below="@+id/View_menu_grid_view_midpoint"
         android:layout_centerHorizontal="true"
+        android:textColor="#125A91"
         />
 
     </RelativeLayout>

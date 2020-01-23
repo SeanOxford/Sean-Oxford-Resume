@@ -7,9 +7,11 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.WindowManager
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.fragments.*
+import com.example.myapplication.util.AppUtil
 import com.example.myapplication.util.FragmentUtil
 import com.example.myapplication.util.OttoBusClasses
 import com.example.myapplication.views.ToolBarCustomView
@@ -38,6 +40,9 @@ class MainActivity : BaseActivity() {
         initFragment()
         Activity_collapse_bar.title = " "
 
+        ViewCompat.setNestedScrollingEnabled(ScrollView_main_activity, false)
+
+
         val params = Activity_AppBarLayout.layoutParams as CoordinatorLayout.LayoutParams
         val behavior = params.behavior as AppBarLayout.Behavior?
         behavior!!.setDragCallback(object : AppBarLayout.Behavior.DragCallback() {
@@ -45,7 +50,9 @@ class MainActivity : BaseActivity() {
                 return false
             }
         })
+
     }
+
 
 
     private fun initFragment() {
@@ -68,15 +75,18 @@ class MainActivity : BaseActivity() {
 
 
     private fun handleMenuItemSelected(title: String) {
-        var fragment: Fragment = Fragment()
+        var fragment: Fragment? = Fragment()
         when (title) {
             MenuFragment.ABOUT_ME_STRING -> fragment = AboutMeFragment()
             MenuFragment.EXPERIENCE_STRING -> fragment = ExperienceFragment()
             MenuFragment.SKILLS_STRING -> fragment = SkillsFragment()
             MenuFragment.LINKEDIN_STRING -> fragment = LinkedInFragment()
+
         }
 
-        FragmentUtil.changeFragment(supportFragmentManager, fragment)
+        if(fragment != null) {
+            FragmentUtil.changeFragment(supportFragmentManager, fragment)
+        }
     }
 
 
@@ -105,7 +115,7 @@ class MainActivity : BaseActivity() {
 
     @Subscribe
     public fun onMenuFragmentExitAnimationFinishedEvent(e: OttoBusClasses.MenuFragmentExitAnimationFinishedEvent) {
-        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         showToolbar(true)
         handleMenuItemSelected(mPendingFragmentTitle)
         mToolbar?.fadeInTitle()
@@ -137,13 +147,7 @@ class MainActivity : BaseActivity() {
 
     @Subscribe
     public fun onEmailClickedEvent(e: OttoBusClasses.EmailClickedEvent) {
-        val emailIntent = Intent(
-            Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto", resources.getString(R.string.email_address), null
-            )
-        )
-
-        startActivity(emailIntent)
+        AppUtil.sendEmail(this)
     }
 
     @Subscribe
@@ -151,7 +155,7 @@ class MainActivity : BaseActivity() {
         startActivity(
             Intent(
                 Intent.ACTION_VIEW,
-                Uri.fromParts("sms", resources.getString(R.string.phone_number), null)
+                Uri.fromParts("sms", resources.getString(R.string.phone_number_formatted), null)
             )
         )
     }

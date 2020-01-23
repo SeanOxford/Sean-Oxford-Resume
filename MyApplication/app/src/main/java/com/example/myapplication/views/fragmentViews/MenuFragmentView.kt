@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.animation.addListener
 import com.example.myapplication.R
+import com.example.myapplication.fragments.MenuFragment
+import com.example.myapplication.util.AppUtil
 import com.example.myapplication.views.MenuFragmentGridRecyclerView
 import kotlinx.android.synthetic.main.layout_menu_fragment.view.*
 
@@ -17,6 +19,7 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
     interface MenuFragmentViewCallbacks {
         fun onMenuItemSelected(title: String)
         fun onLeaveAnimFinished()
+        fun onContactSelected();
     }
 
 
@@ -99,8 +102,12 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
 
 
     override fun onMenuItemSelected(title: String) {
-        animateOut()
-        mCallback.onMenuItemSelected(title)
+        if(title.equals(MenuFragment.CONTACT_ME_STRING)){
+            mCallback.onContactSelected()
+        } else{
+            animateOut()
+            mCallback.onMenuItemSelected(title)
+        }
     }
 
 

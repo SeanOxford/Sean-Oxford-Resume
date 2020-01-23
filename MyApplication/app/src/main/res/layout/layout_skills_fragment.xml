@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/FrameLayout_skills_fragment_bg"
+        android:id="@+id/FrameLayout_info_fragment_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

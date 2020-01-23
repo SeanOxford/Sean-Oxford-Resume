@@ -14,7 +14,7 @@ class FragmentUtil {
 
          fun changeFragment(fragmentManager: FragmentManager?, newfragment: Fragment){
             val fm = fragmentManager?.beginTransaction()
-            fm?.replace(MAIN_ACTIVITY_FRAGMENT_CONTAINER_ID, newfragment)
+            fm?.replace(MAIN_ACTIVITY_FRAGMENT_CONTAINER_ID, newfragment!!)
             fm?.addToBackStack(null)
             fm?.commit()
         }

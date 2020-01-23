@@ -1,16 +1,20 @@
 package com.example.myapplication.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
+import com.example.myapplication.util.AppUtil
 import com.example.myapplication.util.OttoBusClasses
 import com.example.myapplication.views.fragmentViews.BaseFragmentView
 import com.example.myapplication.views.fragmentViews.MenuFragmentView
 
 class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks {
+
+    override fun onContactSelected() {
+        AppUtil.sendEmail(activity)
+    }
 
     override fun getMainView(): BaseFragmentView {
        return MenuFragmentView(context, createMenuInfo(), this)
@@ -19,11 +23,11 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
     private var mView: MenuFragmentView? = null
 
     companion object {
-        const val ABOUT_ME_STRING = "Personal Info"
+        const val ABOUT_ME_STRING = "About Me"
         const val EXPERIENCE_STRING = "Experience"
         const val LINKEDIN_STRING = "LinkedIn"
         const val SKILLS_STRING = "Skills"
-        const val SCHEDULE_INTERVIEW_STRING = "Schedule an Interview"
+        const val CONTACT_ME_STRING = "Contact Me"
         const val EXERCISES_STRING = "Exercises"
 
         fun create(): MenuFragment = MenuFragment()
@@ -57,7 +61,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
         menuItemList.add(MenuFragmentView.MenuItem(EXPERIENCE_STRING, R.drawable.menu_icon_experience))
         menuItemList.add(MenuFragmentView.MenuItem(LINKEDIN_STRING, R.drawable.menu_icon_linkedin))
         menuItemList.add(MenuFragmentView.MenuItem(SKILLS_STRING, R.drawable.menu_icon_skills))
-        menuItemList.add(MenuFragmentView.MenuItem(SCHEDULE_INTERVIEW_STRING, R.drawable.menu_icon_interview))
+        menuItemList.add(MenuFragmentView.MenuItem(CONTACT_ME_STRING, R.drawable.menu_icon_mail))
         menuItemList.add(MenuFragmentView.MenuItem(EXERCISES_STRING, R.drawable.menu_icon_exercises))
 
         return menuItemList
@@ -65,7 +69,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
 
 
     override fun onMenuItemSelected(title: String) {
-        mBus.post(OttoBusClasses.MenuFragmentItemSelectedEvent(title))
+            mBus.post(OttoBusClasses.MenuFragmentItemSelectedEvent(title))
     }
 
     override fun onLeaveAnimFinished() {
