@@ -3,8 +3,8 @@ package com.example.myapplication.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
-import android.view.MenuItem
 import android.view.WindowManager
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
@@ -53,6 +53,15 @@ class MainActivity : BaseActivity() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        Handler().postDelayed({
+            MainActivity_Fragment_Container.requestFocus()
+        }, 1000)
+
+
+
+    }
 
 
     private fun initFragment() {
@@ -74,21 +83,33 @@ class MainActivity : BaseActivity() {
     }
 
 
-    private fun handleMenuItemSelected(title: String) {
-        var fragment: Fragment? = Fragment()
+    private fun handleNewFragmentMenuItemSelected(title: String) {
+        Log.d("nnn", String.format("handle select"))
+        var fragment: Fragment = Fragment()
         when (title) {
             MenuFragment.ABOUT_ME_STRING -> fragment = AboutMeFragment()
             MenuFragment.EXPERIENCE_STRING -> fragment = ExperienceFragment()
             MenuFragment.SKILLS_STRING -> fragment = SkillsFragment()
             MenuFragment.LINKEDIN_STRING -> fragment = LinkedInFragment()
-
         }
 
-        if(fragment != null) {
-            FragmentUtil.changeFragment(supportFragmentManager, fragment)
+        FragmentUtil.changeFragment(supportFragmentManager, fragment)
+    }
+
+    private fun handleNonNewFragmentMenuItemSelected(title: String){
+        when(title){
+            MenuFragment.CONTACT_ME_STRING -> {
+                Log.d("nnn", String.format("dafuq"))
+                AppUtil.sendEmail(this)
+            }
+            MenuFragment.EXERCISES_STRING -> switchToExercisesMenu()
         }
     }
 
+
+    private fun switchToExercisesMenu(){
+        ScreenFractionImageView.fadeToGreen()
+    }
 
     @Subscribe
     public fun onInfoFragmentGoBackEvent(e: OttoBusClasses.InfoFragmentGoBackEvent) {
@@ -96,15 +117,32 @@ class MainActivity : BaseActivity() {
     }
 
     @Subscribe
-    public fun onMenuFragmentItemSelectedEvent(e: OttoBusClasses.MenuFragmentItemSelectedEvent) {
+    public fun onMenuFragmentNonFragmentMenuItemSelectedEvent(e: OttoBusClasses.MenuFragmentNonFragmentMenuItemSelectedEvent) {
+        Log.d("nnn", String.format("clicked: %s", e.title))
+        handleNonNewFragmentMenuItemSelected(e.title)
+        mToolbar?.setTitle(e.title)
+        mPendingFragmentTitle = e.title
+    }
+
+    @Subscribe
+    public fun onMenuFragmentGoToNewFragmentEvent(e: OttoBusClasses.MenuFragmentGoToNewFragmentEvent) {
         window.setFlags(
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
         )
-        Activity_AppBarLayout.setExpanded(false, true)
         mToolbar?.setTitle(e.title)
         mPendingFragmentTitle = e.title
+        Activity_AppBarLayout.setExpanded(false, true)
     }
+
+    @Subscribe
+    public fun onMenuFragmentExitAnimationFinishedEvent(e: OttoBusClasses.MenuFragmentExitAnimationFinishedEvent) {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+        showToolbar(true)
+        handleNewFragmentMenuItemSelected(mPendingFragmentTitle)
+        mToolbar?.fadeInTitle()
+    }
+
 
     @Subscribe
     public fun onMenuFragmentReturnToMenuEvent(e: OttoBusClasses.MenuFragmentReturnToMenuEvent) {
@@ -113,13 +151,6 @@ class MainActivity : BaseActivity() {
         mToolbar?.fadeOutTitle()
     }
 
-    @Subscribe
-    public fun onMenuFragmentExitAnimationFinishedEvent(e: OttoBusClasses.MenuFragmentExitAnimationFinishedEvent) {
-        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-        showToolbar(true)
-        handleMenuItemSelected(mPendingFragmentTitle)
-        mToolbar?.fadeInTitle()
-    }
 
     @Subscribe
     public fun onReturnToMenuEvent(e: OttoBusClasses.ReturnToMenuEvent) {
@@ -147,6 +178,7 @@ class MainActivity : BaseActivity() {
 
     @Subscribe
     public fun onEmailClickedEvent(e: OttoBusClasses.EmailClickedEvent) {
+        Log.d("nnn", String.format("emailGuy"))
         AppUtil.sendEmail(this)
     }
 
@@ -155,7 +187,7 @@ class MainActivity : BaseActivity() {
         startActivity(
             Intent(
                 Intent.ACTION_VIEW,
-                Uri.fromParts("sms", resources.getString(R.string.phone_number_formatted), null)
+                Uri.fromParts("sms", resources.getString(R.string.phone_number), null)
             )
         )
     }

@@ -3,12 +3,10 @@ package com.example.myapplication.views.fragmentViews
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.view.View
-import android.widget.RelativeLayout
+import android.util.Log
 import androidx.core.animation.addListener
 import com.example.myapplication.R
 import com.example.myapplication.fragments.MenuFragment
-import com.example.myapplication.util.AppUtil
 import com.example.myapplication.views.MenuFragmentGridRecyclerView
 import kotlinx.android.synthetic.main.layout_menu_fragment.view.*
 
@@ -17,9 +15,9 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
 
 
     interface MenuFragmentViewCallbacks {
-        fun onMenuItemSelected(title: String)
+        fun onNonNewFragmentMenuItemSelected(title: String)
+        fun onNewFragmentMenuItemSelected(title: String)
         fun onLeaveAnimFinished()
-        fun onContactSelected();
     }
 
 
@@ -102,12 +100,20 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
 
 
     override fun onMenuItemSelected(title: String) {
-        if(title.equals(MenuFragment.CONTACT_ME_STRING)){
-            mCallback.onContactSelected()
-        } else{
+        Log.d("nnn", String.format("222"))
+        if(isNewFragmentSelected(title)){
             animateOut()
-            mCallback.onMenuItemSelected(title)
+            mCallback.onNewFragmentMenuItemSelected(title)
+        } else {
+            mCallback.onNonNewFragmentMenuItemSelected(title)
         }
+    }
+
+    private fun isNewFragmentSelected(title: String) : Boolean {
+        return title == MenuFragment.SKILLS_STRING ||
+                title == MenuFragment.ABOUT_ME_STRING ||
+                title == MenuFragment.LINKEDIN_STRING ||
+                title == MenuFragment.EXPERIENCE_STRING
     }
 
 

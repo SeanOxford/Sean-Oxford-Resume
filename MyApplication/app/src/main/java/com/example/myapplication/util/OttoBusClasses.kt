@@ -3,7 +3,8 @@ package com.example.myapplication.util
 public class OttoBusClasses {
 
 
-    public class MenuFragmentItemSelectedEvent(val title: String)
+    public class MenuFragmentNonFragmentMenuItemSelectedEvent(val title: String)
+    public class MenuFragmentGoToNewFragmentEvent(val title: String)
     public class MenuFragmentExitAnimationFinishedEvent
     public class MenuFragmentReturnToMenuEvent
 
@@ -18,7 +19,5 @@ public class OttoBusClasses {
     public class GoToLinkedInEvent
     public class EmailClickedEvent
     public class SendTextMsgEvent
-
-
 
 }

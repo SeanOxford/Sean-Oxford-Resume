@@ -1,23 +1,20 @@
 package com.example.myapplication.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
-import com.example.myapplication.util.AppUtil
 import com.example.myapplication.util.OttoBusClasses
 import com.example.myapplication.views.fragmentViews.BaseFragmentView
 import com.example.myapplication.views.fragmentViews.MenuFragmentView
 
 class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks {
 
-    override fun onContactSelected() {
-        AppUtil.sendEmail(activity)
-    }
 
     override fun getMainView(): BaseFragmentView {
-       return MenuFragmentView(context, createMenuInfo(), this)
+        return MenuFragmentView(context, createMenuInfo(), this)
     }
 
     private var mView: MenuFragmentView? = null
@@ -39,13 +36,13 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        if(mView == null){
+        if (mView == null) {
             mView = getMainView() as MenuFragmentView
         } else {
             mView?.animateIn()
         }
 
-        return  mView
+        return mView
     }
 
     override fun onStart() {
@@ -54,8 +51,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
     }
 
 
-
-    private fun createMenuInfo() :  ArrayList<MenuFragmentView.MenuItem>{
+    private fun createMenuInfo(): ArrayList<MenuFragmentView.MenuItem> {
         val menuItemList = ArrayList<MenuFragmentView.MenuItem>()
         menuItemList.add(MenuFragmentView.MenuItem(ABOUT_ME_STRING, R.drawable.menu_icon_about_me))
         menuItemList.add(MenuFragmentView.MenuItem(EXPERIENCE_STRING, R.drawable.menu_icon_experience))
@@ -68,15 +64,19 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
     }
 
 
-    override fun onMenuItemSelected(title: String) {
-            mBus.post(OttoBusClasses.MenuFragmentItemSelectedEvent(title))
+    override fun onNewFragmentMenuItemSelected(title: String) {
+        Log.d("nnn", String.format("333"))
+
+        mBus.post(OttoBusClasses.MenuFragmentGoToNewFragmentEvent(title))
+    }
+
+    override fun onNonNewFragmentMenuItemSelected(title: String) {
+        mBus.post(OttoBusClasses.MenuFragmentNonFragmentMenuItemSelectedEvent(title))
     }
 
     override fun onLeaveAnimFinished() {
         mBus.post(OttoBusClasses.MenuFragmentExitAnimationFinishedEvent())
     }
-
-
 
 
 }

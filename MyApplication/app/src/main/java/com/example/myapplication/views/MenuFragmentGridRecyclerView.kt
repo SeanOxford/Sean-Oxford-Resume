@@ -78,6 +78,7 @@ class MenuFragmentGridRecyclerView(
             holder.itemView.TextView_menu_grid_view_text.text = menuItem.title
 
             holder.itemView.setOnClickListener {
+                Log.d("nnn", String.format("111"))
                 mCallBack.onMenuItemSelected(menuItem.title)
             }
         }
