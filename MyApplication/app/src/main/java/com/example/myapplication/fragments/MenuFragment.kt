@@ -46,7 +46,8 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
         if (mView == null) {
             mView = getMainView() as MenuFragmentView
         } else {
-            mView?.fragmentAnimateHeaderIn()
+            mView?.fadeHeaderIn()
+            mView?.raiseMenu()
         }
 
         return mView
