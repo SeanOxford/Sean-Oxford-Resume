@@ -53,17 +53,6 @@ class MainActivity : BaseActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        Handler().postDelayed({
-            MainActivity_Fragment_Container.requestFocus()
-        }, 1000)
-
-
-
-    }
-
-
     private fun initFragment() {
         val sfm = supportFragmentManager.beginTransaction()
         sfm.add(MainActivity_Fragment_Container.id, MenuFragment.create())
@@ -84,7 +73,6 @@ class MainActivity : BaseActivity() {
 
 
     private fun handleNewFragmentMenuItemSelected(title: String) {
-        Log.d("nnn", String.format("handle select"))
         var fragment: Fragment = Fragment()
         when (title) {
             MenuFragment.ABOUT_ME_STRING -> fragment = AboutMeFragment()
@@ -99,7 +87,6 @@ class MainActivity : BaseActivity() {
     private fun handleNonNewFragmentMenuItemSelected(title: String){
         when(title){
             MenuFragment.CONTACT_ME_STRING -> {
-                Log.d("nnn", String.format("dafuq"))
                 AppUtil.sendEmail(this)
             }
             MenuFragment.EXERCISES_STRING -> switchToExercisesMenu()
@@ -118,7 +105,6 @@ class MainActivity : BaseActivity() {
 
     @Subscribe
     public fun onMenuFragmentNonFragmentMenuItemSelectedEvent(e: OttoBusClasses.MenuFragmentNonFragmentMenuItemSelectedEvent) {
-        Log.d("nnn", String.format("clicked: %s", e.title))
         handleNonNewFragmentMenuItemSelected(e.title)
         mToolbar?.setTitle(e.title)
         mPendingFragmentTitle = e.title
@@ -178,7 +164,6 @@ class MainActivity : BaseActivity() {
 
     @Subscribe
     public fun onEmailClickedEvent(e: OttoBusClasses.EmailClickedEvent) {
-        Log.d("nnn", String.format("emailGuy"))
         AppUtil.sendEmail(this)
     }
 

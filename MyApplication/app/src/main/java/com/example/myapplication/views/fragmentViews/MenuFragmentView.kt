@@ -3,7 +3,6 @@ package com.example.myapplication.views.fragmentViews
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.util.Log
 import androidx.core.animation.addListener
 import com.example.myapplication.R
 import com.example.myapplication.fragments.MenuFragment
@@ -14,10 +13,12 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
     BaseFragmentView(context), MenuFragmentGridRecyclerView.GridViewCallback {
 
 
+
     interface MenuFragmentViewCallbacks {
         fun onNonNewFragmentMenuItemSelected(title: String)
         fun onNewFragmentMenuItemSelected(title: String)
         fun onLeaveAnimFinished()
+        fun onMenuChangeFadeOutFinished()
     }
 
 
@@ -35,6 +36,15 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
     }
 
 
+    public fun setNewData(data: List<MenuItem>){
+        mRecyclerView.switchMenu(data)
+    }
+
+    public fun fadeOutMenuButtons(){
+        mRecyclerView.fadeOutMenu()
+    }
+
+
     private fun initGridView() {
         mRecyclerView = MenuFragmentGridRecyclerView(
             context,
@@ -46,7 +56,7 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
     }
 
 
-    private fun animateOut() {
+    private fun fragmentAnimateHeaderOut() {
         val menuDropAnim = ObjectAnimator.ofFloat(mRecyclerView, "translationY", mRecyclerView.height.toFloat())
         menuDropAnim.duration = 400
         menuDropAnim.addListener({ mCallback.onLeaveAnimFinished() })
@@ -71,7 +81,7 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
         animatorSet.start()
     }
 
-    public fun animateIn() {
+    public fun fragmentAnimateHeaderIn() {
         val menuDropAnim = ObjectAnimator.ofFloat(mRecyclerView, "translationY", 0f)
         menuDropAnim.duration = 400
 
@@ -99,10 +109,15 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
     }
 
 
+    override fun onMenuChangeFadeOutFinished() {
+        mCallback.onMenuChangeFadeOutFinished()
+
+    }
+
+
     override fun onMenuItemSelected(title: String) {
-        Log.d("nnn", String.format("222"))
         if(isNewFragmentSelected(title)){
-            animateOut()
+            fragmentAnimateHeaderOut()
             mCallback.onNewFragmentMenuItemSelected(title)
         } else {
             mCallback.onNonNewFragmentMenuItemSelected(title)
@@ -117,7 +132,7 @@ class MenuFragmentView(context: Context?, menuItemList: ArrayList<MenuItem>, cal
     }
 
 
-    data class MenuItem(val title: String, val imageRes: Int)
+    data class MenuItem(val title: String, val imageRes: Int, val color: Int)
 
 
 }

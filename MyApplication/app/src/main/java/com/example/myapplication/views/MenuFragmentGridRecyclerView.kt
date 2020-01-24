@@ -1,9 +1,9 @@
 package com.example.myapplication.views
 
-import android.app.Application
+import android.animation.Animator
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
-import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -16,6 +16,7 @@ import com.squareup.otto.Bus
 import kotlinx.android.synthetic.main.menu_grid_view.view.*
 import javax.inject.Inject
 
+
 class MenuFragmentGridRecyclerView(
     context: Context,
     dataList: ArrayList<MenuFragmentView.MenuItem>,
@@ -27,10 +28,10 @@ class MenuFragmentGridRecyclerView(
 
     interface GridViewCallback {
         fun onMenuItemSelected(title: String)
+        fun onMenuChangeFadeOutFinished()
     }
 
     val mCallBack = callback
-    val mDataList = dataList
     var mAdapter: MenuFragmentGridAdapter? = null
 
 
@@ -42,20 +43,84 @@ class MenuFragmentGridRecyclerView(
 
         viewTreeObserver.addOnGlobalLayoutListener {
             if (mAdapter == null) {
-                mAdapter = MenuFragmentGridAdapter()
+                mAdapter = MenuFragmentGridAdapter(dataList)
                 adapter = mAdapter
             }
         }
 
-
         setNestedScrollingEnabled(false)
+        recycledViewPool.setMaxRecycledViews(0, 16)
+        setRecycledViewPool(recycledViewPool)
+
     }
 
 
+    public fun switchMenu(menuData: List<MenuFragmentView.MenuItem>) {
+        mAdapter?.setDataList(menuData)
+        mAdapter?.notifyDataSetChanged()
+
+        fadeInMenu()
+    }
+
+    public fun fadeOutMenu(){
+        menuButtonTransition(true)
+
+    }
+
+    public fun fadeInMenu(){
+        menuButtonTransition(false)
+    }
 
 
+    public fun menuButtonTransition(fadeOut: Boolean) {
+        val animSet = AnimatorSet()
+        val animList = ArrayList<Animator>()
+        var alpha = if (fadeOut) 0f else 1f
 
-    inner class MenuFragmentGridAdapter : RecyclerView.Adapter<MenuViewHolder>() {
+        for (i in 0 until mAdapter!!.itemCount) {
+            val viewButton = findViewHolderForLayoutPosition(i) as MenuViewHolder
+
+            val fadeOutImageAnim =
+                ObjectAnimator.ofFloat(viewButton.itemView.ImageView_menu_grid_view_image, View.ALPHA, alpha)
+            val fadeOutTextAnim =
+                ObjectAnimator.ofFloat(viewButton.itemView.TextView_menu_grid_view_text, View.ALPHA, alpha)
+
+            animList.add(fadeOutImageAnim)
+            animList.add(fadeOutTextAnim)
+        }
+
+        animSet.playTogether(animList)
+        animSet.duration = 500
+        if (fadeOut) {
+            animSet.addListener(object : Animator.AnimatorListener {
+                override fun onAnimationRepeat(animation: Animator?) {
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                }
+
+                override fun onAnimationStart(animation: Animator?) {
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    mCallBack.onMenuChangeFadeOutFinished()
+                }
+            })
+
+        }
+
+        animSet.start()
+    }
+
+
+    inner class MenuFragmentGridAdapter(var mList: List<MenuFragmentView.MenuItem>) :
+        RecyclerView.Adapter<MenuViewHolder>() {
+
+        public fun setDataList(list: List<MenuFragmentView.MenuItem>) {
+            mList = list
+
+
+        }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
             val inflatedView = inflate(context, R.layout.menu_grid_view, null)
@@ -68,20 +133,22 @@ class MenuFragmentGridRecyclerView(
         }
 
         override fun getItemCount(): Int {
-            return mDataList.size
+            return mList.size
         }
 
         override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
-            val menuItem = mDataList.get(position)
+            val menuItem = mList[position]
 
             holder.itemView.ImageView_menu_grid_view_image.setImageResource(menuItem.imageRes)
+            holder.itemView.ImageView_menu_grid_view_image.setColorFilter(menuItem.color)
             holder.itemView.TextView_menu_grid_view_text.text = menuItem.title
+            holder.itemView.TextView_menu_grid_view_text.setTextColor(menuItem.color)
 
             holder.itemView.setOnClickListener {
-                Log.d("nnn", String.format("111"))
                 mCallBack.onMenuItemSelected(menuItem.title)
             }
         }
+
     }
 
 

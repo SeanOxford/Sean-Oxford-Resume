@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#125A91</color>
     <color name="colorAccent">#1FA3CA</color>
     <color name="info_fragment_text">#FFFFFF</color>
+    <color name="main_menu_tint">#125A91</color>
+    <color name="exercise_menu_tint">#209135</color>
 </resources>

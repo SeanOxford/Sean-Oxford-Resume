@@ -1,7 +1,6 @@
 package com.example.myapplication.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
 
 
     override fun getMainView(): BaseFragmentView {
-        return MenuFragmentView(context, createMenuInfo(), this)
+        return MenuFragmentView(context, createMainMenu(), this)
     }
 
     private var mView: MenuFragmentView? = null
@@ -26,6 +25,14 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
         const val SKILLS_STRING = "Skills"
         const val CONTACT_ME_STRING = "Contact Me"
         const val EXERCISES_STRING = "Exercises"
+
+
+        const val FIBONACCI_STRING = "Fibonacci"
+        const val ARRAYS_STRING = "Arrays"
+        const val LINKED_LIST_STRING = "Linked List"
+        const val BINARY_TREE_STRING = "Binary Tree"
+        const val STRING_STRING = "Strings"
+        const val BACK_TO_MENU_STRING = "Back To Menu"
 
         fun create(): MenuFragment = MenuFragment()
     }
@@ -39,7 +46,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
         if (mView == null) {
             mView = getMainView() as MenuFragmentView
         } else {
-            mView?.animateIn()
+            mView?.fragmentAnimateHeaderIn()
         }
 
         return mView
@@ -51,26 +58,55 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
     }
 
 
-    private fun createMenuInfo(): ArrayList<MenuFragmentView.MenuItem> {
+    private fun createMainMenu(): ArrayList<MenuFragmentView.MenuItem> {
         val menuItemList = ArrayList<MenuFragmentView.MenuItem>()
-        menuItemList.add(MenuFragmentView.MenuItem(ABOUT_ME_STRING, R.drawable.menu_icon_about_me))
-        menuItemList.add(MenuFragmentView.MenuItem(EXPERIENCE_STRING, R.drawable.menu_icon_experience))
-        menuItemList.add(MenuFragmentView.MenuItem(LINKEDIN_STRING, R.drawable.menu_icon_linkedin))
-        menuItemList.add(MenuFragmentView.MenuItem(SKILLS_STRING, R.drawable.menu_icon_skills))
-        menuItemList.add(MenuFragmentView.MenuItem(CONTACT_ME_STRING, R.drawable.menu_icon_mail))
-        menuItemList.add(MenuFragmentView.MenuItem(EXERCISES_STRING, R.drawable.menu_icon_exercises))
+        val color = resources.getColor(R.color.main_menu_tint, null)
+
+
+        menuItemList.add(MenuFragmentView.MenuItem(ABOUT_ME_STRING, R.drawable.menu_icon_about_me, color))
+        menuItemList.add(MenuFragmentView.MenuItem(EXPERIENCE_STRING, R.drawable.menu_icon_experience, color))
+        menuItemList.add(MenuFragmentView.MenuItem(LINKEDIN_STRING, R.drawable.menu_icon_linkedin, color))
+        menuItemList.add(MenuFragmentView.MenuItem(SKILLS_STRING, R.drawable.menu_icon_skills, color))
+        menuItemList.add(MenuFragmentView.MenuItem(CONTACT_ME_STRING, R.drawable.menu_icon_mail, color))
+        menuItemList.add(MenuFragmentView.MenuItem(EXERCISES_STRING, R.drawable.menu_icon_exercises, color))
 
         return menuItemList
     }
 
+    private fun createExerciseMenu(): ArrayList<MenuFragmentView.MenuItem> {
+        val menuItemList = ArrayList<MenuFragmentView.MenuItem>()
+        val color = resources.getColor(R.color.exercise_menu_tint, null)
+
+        menuItemList.add(MenuFragmentView.MenuItem(FIBONACCI_STRING, R.drawable.menu_icon_ex_fib, color))
+        menuItemList.add(MenuFragmentView.MenuItem(ARRAYS_STRING, R.drawable.menu_icon_ex_arrays, color))
+        menuItemList.add(MenuFragmentView.MenuItem(LINKED_LIST_STRING, R.drawable.menu_icon_ex_linked_list, color))
+        menuItemList.add(MenuFragmentView.MenuItem(BINARY_TREE_STRING, R.drawable.menu_icon_ex_binary, color))
+        menuItemList.add(MenuFragmentView.MenuItem(STRING_STRING, R.drawable.menu_icon_ex_string, color))
+        menuItemList.add(MenuFragmentView.MenuItem(BACK_TO_MENU_STRING, R.drawable.menu_icon_ex_back, color))
+
+        return menuItemList
+    }
+
+    override fun onMenuChangeFadeOutFinished() {
+        mView?.setNewData(createExerciseMenu())
+
+    }
+
+    private fun switchToExerciseMenu() {
+        mView?.fadeOutMenuButtons()
+//        mView?.setNewData(createExerciseMenu())
+    }
+
 
     override fun onNewFragmentMenuItemSelected(title: String) {
-        Log.d("nnn", String.format("333"))
-
         mBus.post(OttoBusClasses.MenuFragmentGoToNewFragmentEvent(title))
     }
 
     override fun onNonNewFragmentMenuItemSelected(title: String) {
+        when (title) {
+            EXERCISES_STRING -> switchToExerciseMenu()
+        }
+
         mBus.post(OttoBusClasses.MenuFragmentNonFragmentMenuItemSelectedEvent(title))
     }
 

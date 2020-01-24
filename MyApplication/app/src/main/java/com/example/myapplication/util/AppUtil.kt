@@ -23,7 +23,6 @@ class AppUtil{
                     "mailto", activity?.resources?.getString(R.string.email_address), null
                 )
             )
-            Log.d("nnn", String.format("butts?"))
             activity?.startActivity(emailIntent)
         }
     }
