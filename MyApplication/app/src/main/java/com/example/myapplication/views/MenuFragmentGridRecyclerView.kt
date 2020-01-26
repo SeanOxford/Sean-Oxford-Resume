@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -28,7 +29,6 @@ class MenuFragmentGridRecyclerView(
 
     interface GridViewCallback {
         fun onMenuItemSelected(title: String)
-        fun onMenuChangeFadeOutFinished()
     }
 
     val mCallBack = callback
@@ -56,23 +56,19 @@ class MenuFragmentGridRecyclerView(
 
 
     public fun switchMenu(menuData: List<MenuFragmentView.MenuItem>) {
-        mAdapter?.setDataList(menuData)
-        mAdapter?.notifyDataSetChanged()
-
-        fadeInMenu()
+        fadeOutMenu(menuData)
     }
 
-    public fun fadeOutMenu(){
-        menuButtonTransition(true)
-
+    private fun fadeOutMenu(menuData: List<MenuFragmentView.MenuItem>) {
+        menuButtonTransition(true, menuData)
     }
 
-    public fun fadeInMenu(){
-        menuButtonTransition(false)
+    private fun fadeInMenu() {
+        menuButtonTransition(false, ArrayList<MenuFragmentView.MenuItem>())
     }
 
 
-    public fun menuButtonTransition(fadeOut: Boolean) {
+    public fun menuButtonTransition(fadeOut: Boolean, menuData: List<MenuFragmentView.MenuItem>) {
         val animSet = AnimatorSet()
         val animList = ArrayList<Animator>()
         var alpha = if (fadeOut) 0f else 1f
@@ -103,7 +99,9 @@ class MenuFragmentGridRecyclerView(
                 }
 
                 override fun onAnimationEnd(animation: Animator?) {
-                    mCallBack.onMenuChangeFadeOutFinished()
+                    mAdapter?.setDataList(menuData)
+                    mAdapter?.notifyDataSetChanged()
+                    fadeInMenu()
                 }
             })
 
@@ -129,7 +127,6 @@ class MenuFragmentGridRecyclerView(
             inflatedView.layoutParams.height = height / 3
 
             return MenuViewHolder(inflatedView)
-
         }
 
         override fun getItemCount(): Int {

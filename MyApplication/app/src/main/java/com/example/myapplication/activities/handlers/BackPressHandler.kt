@@ -18,6 +18,8 @@ class BackPressHandler(app: Application?) {
         public val BEHAVIOR_DISABLED = -1
         public val BEHAVIOR_DEFAULT = 0
         public val BEHAVIOR_BACK_TO_MENU = 1
+        public val BEHAVIOR_EXERCISE_TO_MENU = 2
+
     }
 
 
@@ -44,6 +46,7 @@ class BackPressHandler(app: Application?) {
     fun executeCustomBehavior() {
         when (mBackPressBehavior) {
             BEHAVIOR_BACK_TO_MENU -> mBus.post(OttoBusClasses.InfoFragmentGoBackEvent())
+            BEHAVIOR_EXERCISE_TO_MENU -> mBus.post(OttoBusClasses.BackPressFromExerciseMenuEvent())
         }
     }
 

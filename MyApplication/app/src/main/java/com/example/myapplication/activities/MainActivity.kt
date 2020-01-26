@@ -3,13 +3,13 @@ package com.example.myapplication.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.WindowManager
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
+import com.example.myapplication.activities.handlers.BackPressHandler
 import com.example.myapplication.fragments.*
 import com.example.myapplication.util.AppUtil
 import com.example.myapplication.util.FragmentUtil
@@ -86,16 +86,32 @@ class MainActivity : BaseActivity() {
 
     private fun handleNonNewFragmentMenuItemSelected(title: String){
         when(title){
-            MenuFragment.CONTACT_ME_STRING -> {
-                AppUtil.sendEmail(this)
-            }
+            MenuFragment.CONTACT_ME_STRING -> AppUtil.sendEmail(this)
             MenuFragment.EXERCISES_STRING -> switchToExercisesMenu()
+
+            MenuFragment.BACK_TO_MENU_STRING -> switchToMainMenu()
+
         }
+    }
+
+    private fun switchToMainMenu(){
+        ScreenFractionImageView.fadeToBlue()
+        mBus.post(OttoBusClasses.SwitchToMenuEvent(MenuFragment.MENU_TYPE_MAIN))
+        mBus.post(OttoBusClasses.SetBackPressBehaviorEvent(BackPressHandler.BEHAVIOR_DEFAULT))
     }
 
 
     private fun switchToExercisesMenu(){
+        Log.d("nnn", String.format("switch to ex"))
         ScreenFractionImageView.fadeToGreen()
+        mBus.post(OttoBusClasses.SwitchToMenuEvent(MenuFragment.MENU_TYPE_EXERCISE))
+        mBus.post(OttoBusClasses.SetBackPressBehaviorEvent(BackPressHandler.BEHAVIOR_EXERCISE_TO_MENU))
+    }
+
+
+    @Subscribe
+    public fun onBackPressFromExerciseMenuEvent(e: OttoBusClasses.BackPressFromExerciseMenuEvent){
+        switchToMainMenu()
     }
 
     @Subscribe

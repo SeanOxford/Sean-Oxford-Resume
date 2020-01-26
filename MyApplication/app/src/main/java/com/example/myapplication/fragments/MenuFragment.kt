@@ -8,6 +8,8 @@ import com.example.myapplication.R
 import com.example.myapplication.util.OttoBusClasses
 import com.example.myapplication.views.fragmentViews.BaseFragmentView
 import com.example.myapplication.views.fragmentViews.MenuFragmentView
+import com.squareup.otto.Subscribe
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks {
 
@@ -15,6 +17,8 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
     override fun getMainView(): BaseFragmentView {
         return MenuFragmentView(context, createMainMenu(), this)
     }
+
+
 
     private var mView: MenuFragmentView? = null
 
@@ -34,6 +38,10 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
         const val STRING_STRING = "Strings"
         const val BACK_TO_MENU_STRING = "Back To Menu"
 
+        const val MENU_TYPE_MAIN = 0
+        const val MENU_TYPE_EXERCISE = 1
+
+
         fun create(): MenuFragment = MenuFragment()
     }
 
@@ -46,8 +54,7 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
         if (mView == null) {
             mView = getMainView() as MenuFragmentView
         } else {
-            mView?.fadeHeaderIn()
-            mView?.raiseMenu()
+            mView?.animateInFromFragment()
         }
 
         return mView
@@ -88,15 +95,8 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
         return menuItemList
     }
 
-    override fun onMenuChangeFadeOutFinished() {
-        mView?.setNewData(createExerciseMenu())
 
-    }
 
-    private fun switchToExerciseMenu() {
-        mView?.fadeOutMenuButtons()
-//        mView?.setNewData(createExerciseMenu())
-    }
 
 
     override fun onNewFragmentMenuItemSelected(title: String) {
@@ -104,15 +104,21 @@ class MenuFragment : BaseFragment(), MenuFragmentView.MenuFragmentViewCallbacks 
     }
 
     override fun onNonNewFragmentMenuItemSelected(title: String) {
-        when (title) {
-            EXERCISES_STRING -> switchToExerciseMenu()
-        }
-
         mBus.post(OttoBusClasses.MenuFragmentNonFragmentMenuItemSelectedEvent(title))
     }
 
     override fun onLeaveAnimFinished() {
         mBus.post(OttoBusClasses.MenuFragmentExitAnimationFinishedEvent())
+    }
+
+    @Subscribe
+    public fun onSwitchToMenuEvent(e: OttoBusClasses.SwitchToMenuEvent){
+        when(e.menuID){
+            MENU_TYPE_MAIN -> mView?.setNewData(createMainMenu(), MENU_TYPE_MAIN)
+            MENU_TYPE_EXERCISE -> mView?.setNewData(createExerciseMenu(), MENU_TYPE_EXERCISE)
+        }
+
+
     }
 
 
