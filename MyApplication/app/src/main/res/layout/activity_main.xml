@@ -23,7 +23,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
-            <com.example.myapplication.views.ScreenFractionImageView
+            <com.seanoxford.resume.views.ScreenFractionImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/ScreenFractionImageView"

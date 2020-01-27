@@ -1,69 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/RelativeLayout_test_fragment"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/FrameLayout_info_fragment_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical">
 
-
-    <FrameLayout
-        android:id="@+id/FrameLayout_test_fragment_fibview_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/dialog_holo_light_frame" />
-
-
     <RelativeLayout
-        android:id="@+id/RelativeLayout_test_fragment_fibview_controls"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/FrameLayout_test_fragment_fibview_container"
-        android:background="@android:drawable/dialog_holo_light_frame">
+        android:layout_height="match_parent">
+
+
+        <FrameLayout
+            android:id="@+id/FrameLayout_test_fragment_fibview_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/dialog_holo_light_frame" />
+
 
         <RelativeLayout
+            android:id="@+id/RelativeLayout_test_fragment_fibview_controls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#4285F4"
-            android:padding="@dimen/base_margin">
+            android:layout_below="@+id/FrameLayout_test_fragment_fibview_container"
+            android:background="@android:drawable/dialog_holo_light_frame">
 
-            <TextView
-                android:id="@+id/TextView_test_fragment_squares"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF" />
-
-
-            <SeekBar
-                android:id="@+id/Seekbar_test_fragment_squares"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@+id/TextView_test_fragment_squares"
-                android:progress="0"
-                android:progressTint="@android:color/white"
-                android:thumbTint="@android:color/white" />
-
-            <TextView
-                android:id="@+id/TextView_test_fragment_scale"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Seekbar_test_fragment_squares"
-                android:textColor="#FFFFFF" />
+                android:background="#4285F4"
+                android:padding="@dimen/base_margin">
+
+                <TextView
+                    android:id="@+id/TextView_test_fragment_squares"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF" />
 
 
-            <SeekBar
-                android:id="@+id/Seekbar_test_fragment_scale"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@+id/TextView_test_fragment_scale"
-                android:progress="0"
-                android:progressTint="@android:color/white"
-                android:thumbTint="@android:color/white" />
+                <SeekBar
+                    android:id="@+id/Seekbar_test_fragment_squares"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/TextView_test_fragment_squares"
+                    android:progress="0"
+                    android:progressTint="@android:color/white"
+                    android:thumbTint="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/TextView_test_fragment_scale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Seekbar_test_fragment_squares"
+                    android:textColor="#FFFFFF" />
+
+
+                <SeekBar
+                    android:id="@+id/Seekbar_test_fragment_scale"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/TextView_test_fragment_scale"
+                    android:progress="0"
+                    android:progressTint="@android:color/white"
+                    android:thumbTint="@android:color/white" />
+
+            </RelativeLayout>
+
 
         </RelativeLayout>
-
 
     </RelativeLayout>
 
 
-</RelativeLayout>
+</FrameLayout>
