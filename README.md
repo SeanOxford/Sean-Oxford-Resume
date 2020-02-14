@@ -2,6 +2,9 @@
 
 Simple Kotlin-based resume app showcasing architectural, design, implementation and animation skills.
 
+Download on the Playstore here:
+https://play.google.com/store/apps/details?id=com.oxford.resume
+
 ## Developed By
 
 	Sean Oxford - oxford.sean@gmail.com
