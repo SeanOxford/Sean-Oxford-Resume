@@ -10,7 +10,7 @@ Download on the Playstore [here.](https://play.google.com/store/apps/details?id=
 	Sean Oxford - oxford.sean@gmail.com
 
 
-##License
+## License
 
     Copyright 2015 Sean Oxford
 
