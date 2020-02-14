@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/code_bg" />
+            android:src="@drawable/bg_skills" />
 
         <View
             android:id="@+id/View_experience_fade_cover"

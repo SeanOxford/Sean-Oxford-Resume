@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/mountain" />
+            android:src="@drawable/bg_about" />
 
         <View
             android:id="@+id/View_about_me_fade_cover"
@@ -74,7 +74,7 @@
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="2dp"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/android"
+                        android:src="@drawable/android_vector_text"
                         android:textColor="@color/info_fragment_text"
                         android:tint="#FFFFFF" />
 
@@ -134,7 +134,7 @@
             <TextView
                 android:id="@+id/TextView_about_me_phone_number"
                 style="@style/info_fragment_desc_style"
-                android:text="@string/phone_number" />
+                android:text="@string/phone_number_formatted" />
 
 
             <TextView
@@ -148,7 +148,7 @@
                 android:layout_height="64dp"
                 android:layout_marginBottom="@dimen/base_margin"
                 android:alpha="0"
-                android:src="@drawable/linked_in_button" />
+                android:src="@drawable/icon_linkedin" />
         </LinearLayout>
 
     </ScrollView>

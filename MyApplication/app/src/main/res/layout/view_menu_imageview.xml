@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/ImageView_menu_bar_blue"
-        android:src="@drawable/menu_bg"
+        android:src="@drawable/header_main"
         android:scaleType="centerCrop"
         />
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/ImageView_menu_bar_green"
-        android:src="@drawable/green_bg"
+        android:src="@drawable/header_exercises"
         android:scaleType="centerCrop"
         android:alpha="0"
         />

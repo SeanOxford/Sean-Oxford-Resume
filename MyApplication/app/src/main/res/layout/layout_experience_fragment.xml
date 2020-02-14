@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/sincerely" />
+            android:src="@drawable/bg_experience" />
 
         <View
             android:id="@+id/View_experience_fade_cover"
@@ -98,14 +98,14 @@
                     android:layout_height="@dimen/experience_fragment_app_dimen"
                     android:layout_marginTop="3dp"
                     android:layout_marginRight="6dp"
-                    android:src="@drawable/ink" />
+                    android:src="@drawable/icon_ink" />
 
                 <ImageView
                     android:id="@+id/ImageView_experience_fragment_postagram"
                     android:layout_width="@dimen/experience_fragment_app_dimen"
                     android:layout_height="@dimen/experience_fragment_app_dimen"
                     android:layout_marginTop="3dp"
-                    android:src="@drawable/posta" />
+                    android:src="@drawable/icon_postagram" />
 
             </LinearLayout>
 

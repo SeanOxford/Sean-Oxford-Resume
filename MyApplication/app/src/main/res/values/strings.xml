@@ -20,11 +20,7 @@
     <string name="about_me_fragment_location_title">Location:</string>
     <string name="about_me_fragment_location">San Francisco, CA</string>
     <string name="about_me_fragment_interests_title">Interests:</string>
-    <string name="about_me_fragment_interests"> \u2022Making celtic music electronically\n
-\u2022Making electronic music acoustically\n
-\u2022Androidery\n
-\u2022Vidya games\n
-\u2022Online Star Wars debates</string>
+    <string name="about_me_fragment_interests">\u2022Making celtic music electronically\n\u2022Making electronic music acoustically\n\u2022Androidery\n\u2022Vidya games\n\u2022Online Star Wars debates</string>
     <string name="about_me_fragment_email_title">Email:</string>
     <string name="about_me_fragment_phone_title">Phone Number:</string>
     <string name="about_me_fragment_linkedin_title">LinkedIn:</string>
@@ -35,11 +31,11 @@
     <string name="skills_fragment_languages_used_title">Languages I\'ve used</string>
     <string name="skills_fragment_languages_used">C++, Objective C, C#, CSS/HTML, Javascript, JSP, PHP,  XML, LUA, SQL, Quenya</string>
     <string name="skills_fragment_android_libraries_title">Android Libraries</string>
-    <string name="skills_fragment_android_libraries">RxJava, Dagger 2, Glide, OttoBus, IcePick, Parceler, OkHTTP, GSON, RetroFit, FilePicker </string>
+    <string name="skills_fragment_android_libraries">Dagger 2, FilePicker, Glide, GSON, IcePick, OkHTTP, OttoBus, Parceler, Retrofit, RxJava</string>
     <string name="skills_fragment_android_apis_title">APIs</string>
-    <string name="skills_fragment_android_apis">Fabric.io, Mixpanel, LeanPlum, Firebase, Braze, Facebook, Retrofit, Google Maps, Google Places, Urban Airship, Sincerely Inc.</string>
+    <string name="skills_fragment_android_apis">Braze, Fabric.io, Facebook, Firebase, Google Maps, Google Places, LeanPlum, Mixpanel, Sincerely Inc., Urban Airship</string>
     <string name="skills_fragment_android_technologies_title">Other Technologies</string>
-    <string name="skills_fragment_android_technologies">Git, Gradle, Adobe Photoshop</string>
+    <string name="skills_fragment_android_technologies">Adobe Photoshop, Git, Gradle</string>
 
     <string name="phone_number">17605047920</string>
     <string name="phone_number_formatted">(760) 504-7920</string>
@@ -47,6 +43,8 @@
     <string name="ink_url">https://play.google.com/store/apps/details?id=com.sincerely.android.ink</string>
     <string name="postagram_url">https://play.google.com/store/apps/details?id=com.sincerely.android.postagram</string>
     <string name="linked_in">https://www.linkedin.com/in/sean-oxford-943427103/</string>
+    <string name="under_construction_toast" formatted="false">%s is currently under construction</string>
+
 
 
 
