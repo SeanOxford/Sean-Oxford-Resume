@@ -4,7 +4,7 @@ Simple Kotlin-based resume app showcasing architectural, design, implementation 
 
 Download it on the Playstore [here.](https://play.google.com/store/apps/details?id=com.oxford.resume)
 
-![Alt text](http://seanoxford.com/prev_gif.gif)
+![Alt text](https://github.com/SeanOxford/Sean-Oxford-Resume/blob/master/prev_gif.gif?raw=true)
 
 ## Developed By
 
