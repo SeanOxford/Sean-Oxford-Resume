@@ -1,6 +1,6 @@
 # Sean Oxford Resume
 
-Simple Kotlin-based resume app showcasing architectural, design, implementation and animation skills.
+Simple Kotlin-based resume app showcasing MVP architectural, design, implementation, animation and coding style.
 
 Download it on the Playstore [here.](https://play.google.com/store/apps/details?id=com.oxford.resume)
 
